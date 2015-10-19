@@ -73,9 +73,22 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </tr>
 </tbody></table>
 
-          <h1 id="resources">Resources</h1>
+          <h1 id="including-nested-objects">Including Nested Objects</h1>
 
-<p>TODO</p>
+<p>By default, the nested objects returned from the API are referenced in the following form:</p>
+
+<p><code class="prettyprint">{ &quot;object&quot;: &quot;OBJECT_MODEL_NAME&quot;, &quot;referenceId&quot;: &quot;OBJECT_ID&quot; }</code></p>
+
+<p>These nested objects can be included in the API response by using the url query parameter &lsquo;include&rsquo;. You can include multiple nested objects at once by joining the object&rsquo;s property separated by comman. Also deeper nested objects can be included by joining the child and decendent&rsquo;s properties separated by comma.</p>
+
+<blockquote>
+<p>For example, to include performer and result in a diagnostic report</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781-bccc3707932d?include=performer,result.components" \
+  -H "Authorization: YOUR_API_KEY"
+</code></pre>
+
+          <h1 id="resources">Resources</h1>
 
           <h2 id="medical-facilities">Medical Facilities</h2>
 
@@ -602,8 +615,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
   </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"primaryPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6317369763"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"ssLastFourDigits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lim.steven.123@gmail.com"</span><span class="w">
+  </span><span class="nt">"ssLastFourDigits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -987,6 +999,269 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <td>The ID of the patient</td>
 </tr>
 </tbody></table>
+
+          <h2 id="encounters">Encounters</h2>
+
+<p>This is an object representing an encounter.</p>
+
+<h3 id="get-a-specific-encounter">Get a specific encounter</h3>
+
+<p>TODO</p>
+
+<h3 id="list-encounters">List encounters</h3>
+
+<p>TODO</p>
+
+<h3 id="create-an-encounter">Create an encounter</h3>
+
+<p>TODO</p>
+
+<h3 id="update-an-encounter">Update an encounter</h3>
+
+<p>TODO</p>
+
+<h3 id="delete-an-encounter">Delete an encounter</h3>
+
+<p>TODO</p>
+
+          <h2 id="medications">Medications</h2>
+
+<p>This is an object representing an medication.</p>
+
+<h3 id="get-a-specific-medication">Get a specific medication</h3>
+
+<p>TODO</p>
+
+<h3 id="list-medications">List medications</h3>
+
+<p>TODO</p>
+
+<h3 id="create-an-medication">Create an medication</h3>
+
+<p>TODO</p>
+
+<h3 id="update-an-medication">Update an medication</h3>
+
+<p>TODO</p>
+
+<h3 id="delete-an-medication">Delete an medication</h3>
+
+<p>TODO</p>
+
+          <h2 id="lab-test-result">Lab Test Result</h2>
+
+<p>This is an object representing a lab test result. It is referenced by a lab test panel.</p>
+
+<h3 id="get-a-specific-lab-test-result">Get a specific lab test result</h3>
+
+<p>TODO</p>
+
+<h3 id="list-lab-test-results">List lab test results</h3>
+
+<p>TODO</p>
+
+<h3 id="create-a-lab-test-result">Create a lab test result</h3>
+
+<p>TODO</p>
+
+<h3 id="update-a-lab-test-result">Update a lab test result</h3>
+
+<p>TODO</p>
+
+<h3 id="delete-a-lab-test-result">Delete a lab test result</h3>
+
+<p>TODO</p>
+
+          <h2 id="lab-test-panel">Lab Test Panel</h2>
+
+<p>This is an object representing a lab test panel. It is referenced by a diagnostic report.</p>
+
+<h3 id="get-a-specific-lab-test-panel">Get a specific lab test panel</h3>
+
+<p>TODO</p>
+
+<h3 id="list-lab-test-panels">List lab test panels</h3>
+
+<p>TODO</p>
+
+<h3 id="create-a-lab-test-panel">Create a lab test panel</h3>
+
+<p>TODO</p>
+
+<h3 id="update-a-lab-test-panel">Update a lab test panel</h3>
+
+<p>TODO</p>
+
+<h3 id="delete-a-lab-test-panel">Delete a lab test panel</h3>
+
+<p>TODO</p>
+
+          <h2 id="diagnostic-reports">Diagnostic Reports</h2>
+
+<p>This is an object representing a diagnostic report.</p>
+
+<h3 id="get-a-specific-diagnostic-report">Get a specific diagnostic report</h3>
+
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DiagnosticReport"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medicalPractitioner"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9899e9d3-be6e-4f83-942d-cd755722c672"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae8a6262-33d1-46f1-b8d9-ca2dbd42bef6"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f2eaea8-c2a4-43e1-ba70-44f3b59c7052"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef45c193-2712-4b0e-b329-3364c19f7233"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"imagingStudy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1c66e17-f31d-481f-81a5-3b8712eda46f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalRecordPdf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06aa180e-f3ba-4614-a4a6-2a11debad0e0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Return a diagnostic report object.</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/diagnostic reports/:id</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the diagnostic report to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="list-diagnostic-reports">List diagnostic reports</h3>
+
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/diagnostic reports"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DiagnosticReport"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medicalPractitioner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9899e9d3-be6e-4f83-942d-cd755722c672"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae8a6262-33d1-46f1-b8d9-ca2dbd42bef6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f2eaea8-c2a4-43e1-ba70-44f3b59c7052"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef45c193-2712-4b0e-b329-3364c19f7233"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"imagingStudy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1c66e17-f31d-481f-81a5-3b8712eda46f"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalRecordPdf"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06aa180e-f3ba-4614-a4a6-2a11debad0e0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Return a list of diagnostic report objects</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/diagnostic-reports</code></p>
+
+<h3 id="create-a-diagnostic-report">Create a diagnostic report</h3>
+
+<p>TODO</p>
+
+<h3 id="update-diagnostic-report">Update diagnostic report</h3>
+
+<p>TODO</p>
+
+<h3 id="delete-diagnostic-report">Delete diagnostic report</h3>
+
+<p>Permanently delete a diagnostic report</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/diagnostic-reports/:id</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The ID of the diagnostic report</td>
+</tr>
+</tbody></table>
+
+          <h1 id="coding">Coding</h1>
 
           <h1 id="errors">Errors</h1>
 
