@@ -22,7 +22,7 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781
   "id": "a15ad9e5-d96b-4ebf-9781-bccc3707932d",
   "effectiveDate": "2015-10-17",
   "performer": {
-    "object": "medicalPractitioner",
+    "object": "MedicalPractitioner",
     "referenceId": "ad5ea88e-a79a-4431-98ae-45b3ef254f8a"
   },
   "result": [
@@ -82,7 +82,7 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports" \
     "id": "a15ad9e5-d96b-4ebf-9781-bccc3707932d",
     "effectiveDate": "2015-10-17",
     "performer": {
-      "object": "medicalPractitioner",
+      "object": "MedicalPractitioner",
       "referenceId": "ad5ea88e-a79a-4431-98ae-45b3ef254f8a"
     },
     "result": [
