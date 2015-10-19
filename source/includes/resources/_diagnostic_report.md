@@ -1,5 +1,10 @@
 ## Diagnostic Reports
-This is an object representing a diagnostic report.
+This is an object representing a diagnostic report. A `DiagnosticReport` object includes
+
+* Laborary (Clinical Chemistry, Hematology, Migrobiology, etc.)
+* Pathology / Histopathology /related disciplines
+* Imaging Investigations (X-ray, CT, MRI etc.)
+* Other diagnostics - Cardiology, Gastroenterology etc.
 
 ### Get a specific diagnostic report
 > Example request:
@@ -42,6 +47,7 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781
     "object": "ImagingStudy",
     "referenceId": "c1c66e17-f31d-481f-81a5-3b8712eda46f"
   },
+  "conclusion": null,
   "presentedForm": {
     "object": "MedicalRecordPdf",
     "referenceId": "06aa180e-f3ba-4614-a4a6-2a11debad0e0"
@@ -51,7 +57,7 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781
 Return a diagnostic report object.
 
 #### HTTP Request
-`GET https://api.picnichealth.com/v1/diagnostic reports/:id`
+`GET https://api.picnichealth.com/v1/diagnostic-reports/:id`
 
 #### URL Parameters
 Parameter | Description
@@ -63,7 +69,7 @@ id | The ID of the diagnostic report to be retrieved.
 > Example request:
 
 ```shell
-curl "https://api.picnichealth.com/v1/diagnostic reports" \
+curl "https://api.picnichealth.com/v1/diagnostic-reports" \
   -H "Authorization: YOUR_API_KEY"
 ```
 

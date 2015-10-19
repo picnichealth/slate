@@ -1,4 +1,4 @@
-## Lab Test Result
+## Lab Test Results
 This is an object representing a lab test result. It is referenced by a lab test panel.
 
 ### Get a specific lab test result

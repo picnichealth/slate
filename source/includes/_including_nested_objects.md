@@ -4,7 +4,7 @@ By default, the nested objects returned from the API are referenced in the follo
 
 `{ "object": "OBJECT_MODEL_NAME", "referenceId": "OBJECT_ID" }`
 
-These nested objects can be included in the API response by using the url query parameter 'include'. You can include multiple nested objects at once by joining the object's property separated by comman. Also deeper nested objects can be included by joining the child and decendent's properties separated by comma.
+These nested objects can be included in the API response by using the url query parameter 'include'. You can include multiple nested objects at once by joining the object's property separated by commas. Also deeper nested objects can be included by joining the child and decendent's properties separated by comma.
 
 > For example, to include performer and result in a diagnostic report
 
