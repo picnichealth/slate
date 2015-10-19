@@ -1026,6 +1026,16 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
           <h2 id="coding">Coding</h2>
 
+<p>Currently, PicnicHealth uses the following standard code systems for each encounter and encounter items:</p>
+
+<ul>
+<li><a target="_blank" href="http://loinc.org/">LOINC</a> for <a href="#observations">Observation</a> and <a href="#lab-test-results">LabTestResult</a> objects</li>
+<li><a target="_blank" href="https://www.nlm.nih.gov/research/umls/rxnorm">RxNorm</a> for <a href="#medication-statements">MedicationStatement</a> objects</li>
+<li><a target="_blank" href="http://www.cdc.gov/nchs/icd/icd9cm.htm">ICD9-CM</a> for <a href="#problems">Problem</a> objects</li>
+</ul>
+
+<p>There are some cases where a codeable encounter or encounter items cannot be associated with any code in the above standard code systems. For those cases, we use a PicnicHealth built-in code system <code class="prettyprint">Buffet</code> as an extension of the associated code. This <code class="prettyprint">Buffet</code> code is a temporary code and is replaced by the standard code as an equivalent code is added to the standard code system. This allows any codes to be easily managable and reuseable.</p>
+
           <h2 id="medication-statements">Medication Statements</h2>
 
 <p>This is an object representing a medication statement.</p>
@@ -1406,7 +1416,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medicalPractitioner"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1477,7 +1487,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"medicalPractitioner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
