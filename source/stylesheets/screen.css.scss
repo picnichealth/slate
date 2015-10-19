@@ -83,6 +83,8 @@ html, body {
 
   // This is the logo at the top of the ToC
   &>img {
+    margin-top: 10px;
+    margin-left: 10px;
     display: block;
   }
 
@@ -174,7 +176,6 @@ html, body {
 
   // This is the currently selected ToC entry
   .tocify-focus {
-    box-shadow: 0px 1px 0px $nav-active-shadow;
     background-color: $nav-active-bg;
     color: $nav-active-text;
   }
@@ -190,10 +191,18 @@ html, body {
       font-size: 12px;
     }
 
-    // for embossed look:
-    @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
+    }
+  }
+
+  .tocify-subheader {
+    .tocify-subheader {
+      .tocify-item>a {
+        // Styling here for a level 2 nesting. For example ->
+        padding-left: $nav-padding + $nav-indent * 2;
+        font-size: 12px;
+      }
     }
   }
 
@@ -526,7 +535,8 @@ html, body {
     background-color: $code-bg;
     color: #fff;
 
-    padding: 2em $main-padding;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
     margin: 0;
     width: $examples-width;
 
@@ -548,6 +558,8 @@ html, body {
   }
 
   pre {
+    padding-top: 1em;
+    padding-bottom: 2em;
     @extend %code-font;
   }
 
@@ -557,8 +569,6 @@ html, body {
       border-radius: 5px;
       padding: $code-annotation-padding;
       color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
     }
   }
 }
