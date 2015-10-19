@@ -28,8 +28,7 @@ curl "https://api.picnichealth.com/v1/patients/388d2e58-b3fd-45a2-84b2-c95108a54
   "country": "United States",
   "primaryPhone": "6317369763",
   "gender": "female",
-  "ssLastFourDigits": 1234,
-  "email": "lim.steven.123@gmail.com"
+  "ssLastFourDigits": 1234
 }
 ```
 Return a patient object.
