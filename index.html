@@ -79,7 +79,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">{ &quot;object&quot;: &quot;OBJECT_MODEL_NAME&quot;, &quot;referenceId&quot;: &quot;OBJECT_ID&quot; }</code></p>
 
-<p>These nested objects can be included in the API response by using the url query parameter &lsquo;include&rsquo;. You can include multiple nested objects at once by joining the object&rsquo;s property separated by comman. Also deeper nested objects can be included by joining the child and decendent&rsquo;s properties separated by comma.</p>
+<p>These nested objects can be included in the API response by using the url query parameter &lsquo;include&rsquo;. You can include multiple nested objects at once by joining the object&rsquo;s property separated by commas. Also deeper nested objects can be included by joining the child and decendent&rsquo;s properties separated by comma.</p>
 
 <blockquote>
 <p>For example, to include performer and result in a diagnostic report</p>
@@ -1024,31 +1024,306 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p>TODO</p>
 
-          <h2 id="medications">Medications</h2>
+          <h2 id="coding">Coding</h2>
 
-<p>This is an object representing an medication.</p>
+          <h2 id="medication-statements">Medication Statements</h2>
+
+<p>This is an object representing a medication statement.</p>
 
 <h3 id="get-a-specific-medication">Get a specific medication</h3>
 
-<p>TODO</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/medication-statements/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c519a0a5-98a4-4cbe-81a7-4d41e9002d49"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"instruction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Take 1 cap by mouth 4 times a day before meals and at bedtime."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Below 325mg: negative personality changes. Above 350mg: slow increase in tremors"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Return a medical practitioner object.</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/medication-statements/:id</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the medication to be retrieved.</td>
+</tr>
+</tbody></table>
 
 <h3 id="list-medications">List medications</h3>
 
-<p>TODO</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/medication-statements"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c519a0a5-98a4-4cbe-81a7-4d41e9002d49"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"instruction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Take 1 cap by mouth 4 times a day before meals and at bedtime."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Below 325mg: negative personality changes. Above 350mg: slow increase in tremors"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>Return a list of medical practitioner objects</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/medication-statements</code></p>
 
 <h3 id="create-an-medication">Create an medication</h3>
 
-<p>TODO</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/medication-statements"</span> <span class="se">\</span>
+  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "c519a0a5-98a4-4cbe-81a7-4d41e9002d49" }'</span> <span class="se">\</span>
+  -d <span class="nv">status</span><span class="o">=</span><span class="s2">"active"</span> <span class="se">\</span>
+  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
+  -d <span class="nv">medicationCoding</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId:": "eb8992d8-3117-47b3-a660-b9156b2b35bc" }'</span> <span class="se">\</span>
+  -d <span class="nv">instruction</span><span class="o">=</span><span class="s2">"18 units every morning, 12 units every evening"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c519a0a5-98a4-4cbe-81a7-4d41e9002d49"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"instruction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Take 1 cap by mouth 4 times a day before meals and at bedtime."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Below 325mg: negative personality changes. Above 350mg: slow increase in tremors"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/medication-statements</code></p>
+
+<p>Create a new medication statement object.</p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patient</td>
+<td>Patient</td>
+<td>The patient with whom the medication is associated</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>The status of the medication</td>
+</tr>
+<tr>
+<td>effectiveDate</td>
+<td>String</td>
+<td>The date of the medication recorded</td>
+</tr>
+<tr>
+<td>medicationCoding</td>
+<td>Code</td>
+<td>The coding of the medcation</td>
+</tr>
+<tr>
+<td>instruction</td>
+<td>String</td>
+<td>The instruction for the medication</td>
+</tr>
+<tr>
+<td>note</td>
+<td>String</td>
+<td>The note for the medication statement</td>
+</tr>
+</tbody></table>
 
 <h3 id="update-an-medication">Update an medication</h3>
 
-<p>TODO</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/medication-statements/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
+  -d <span class="nv">id</span><span class="o">=</span><span class="s2">"50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span>,
+  -d <span class="nv">note</span><span class="o">=</span><span class="s2">"Take 2 cap by mouth 2 times a day before meals"</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
 
-<h3 id="delete-an-medication">Delete an medication</h3>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c519a0a5-98a4-4cbe-81a7-4d41e9002d49"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"instruction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Take 2 cap by mouth 2 times a day before meals."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Below 325mg: negative personality changes. Above 350mg: slow increase in tremors"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<p>TODO</p>
+<h4 id="http-request">HTTP Request</h4>
 
-          <h2 id="lab-test-result">Lab Test Result</h2>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/medication-statements/:id</code></p>
+
+<p>Update a medical practitioner</p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patient</td>
+<td>Patient</td>
+<td>The patient with whom the medication is associated</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>The status of the medication</td>
+</tr>
+<tr>
+<td>effectiveDate</td>
+<td>String</td>
+<td>The date of the medication recorded</td>
+</tr>
+<tr>
+<td>medicationCoding</td>
+<td>Code</td>
+<td>The coding of the medcation</td>
+</tr>
+<tr>
+<td>instruction</td>
+<td>String</td>
+<td>The instruction for the medication</td>
+</tr>
+<tr>
+<td>note</td>
+<td>String</td>
+<td>The note for the medication statement</td>
+</tr>
+</tbody></table>
+
+<h3 id="delete-a-medication-statement">Delete a medication statement</h3>
+
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/medication-statements/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY
+</span></code></pre>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Permanently delete a medical practitioner</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/medication-statements/:id</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>DataType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The ID of the medication statements</td>
+</tr>
+</tbody></table>
+
+          <h2 id="lab-test-results">Lab Test Results</h2>
 
 <p>This is an object representing a lab test result. It is referenced by a lab test panel.</p>
 
@@ -1072,33 +1347,47 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p>TODO</p>
 
-          <h2 id="lab-test-panel">Lab Test Panel</h2>
+          <h2 id="observations">Observations</h2>
 
-<p>This is an object representing a lab test panel. It is referenced by a diagnostic report.</p>
+<p>This is an object representing an observation. It is referenced by a diagnostic report. An <code class="prettyprint">Observation</code> object includes</p>
 
-<h3 id="get-a-specific-lab-test-panel">Get a specific lab test panel</h3>
+<ul>
+<li>Laboratory Data</li>
+<li>Imaging results like bone density or fetal measurements</li>
+<li>Devices Measurements such EKG data or Pulse Oximetry data</li>
+<li>Clinical assessment tools such as APGAR</li>
+</ul>
 
-<p>TODO</p>
-
-<h3 id="list-lab-test-panels">List lab test panels</h3>
-
-<p>TODO</p>
-
-<h3 id="create-a-lab-test-panel">Create a lab test panel</h3>
-
-<p>TODO</p>
-
-<h3 id="update-a-lab-test-panel">Update a lab test panel</h3>
+<h3 id="get-a-specific-observation">Get a specific observation</h3>
 
 <p>TODO</p>
 
-<h3 id="delete-a-lab-test-panel">Delete a lab test panel</h3>
+<h3 id="list-observations">List observations</h3>
+
+<p>TODO</p>
+
+<h3 id="create-an-observation">Create an observation</h3>
+
+<p>TODO</p>
+
+<h3 id="update-an-observation">Update an observation</h3>
+
+<p>TODO</p>
+
+<h3 id="delete-an-observation">Delete an observation</h3>
 
 <p>TODO</p>
 
           <h2 id="diagnostic-reports">Diagnostic Reports</h2>
 
-<p>This is an object representing a diagnostic report.</p>
+<p>This is an object representing a diagnostic report. A <code class="prettyprint">DiagnosticReport</code> object includes</p>
+
+<ul>
+<li>Laborary (Clinical Chemistry, Hematology, Migrobiology, etc.)</li>
+<li>Pathology / Histopathology /related disciplines</li>
+<li>Imaging Investigations (X-ray, CT, MRI etc.)</li>
+<li>Other diagnostics - Cardiology, Gastroenterology etc.</li>
+</ul>
 
 <h3 id="get-a-specific-diagnostic-report">Get a specific diagnostic report</h3>
 
@@ -1142,6 +1431,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1c66e17-f31d-481f-81a5-3b8712eda46f"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalRecordPdf"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06aa180e-f3ba-4614-a4a6-2a11debad0e0"</span><span class="w">
@@ -1153,7 +1443,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/diagnostic reports/:id</code></p>
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/diagnostic-reports/:id</code></p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -1174,7 +1464,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/diagnostic reports"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/diagnostic-reports"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 
@@ -1260,8 +1550,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <td>The ID of the diagnostic report</td>
 </tr>
 </tbody></table>
-
-          <h1 id="coding">Coding</h1>
 
           <h1 id="errors">Errors</h1>
 
