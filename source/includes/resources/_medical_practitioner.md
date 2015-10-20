@@ -1,4 +1,4 @@
-## Medical Practitioners
+# Medical Practitioners
 This is an object representing a medical practitioner
 
 ### Get a specific medical practitioner

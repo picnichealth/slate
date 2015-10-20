@@ -74,7 +74,7 @@ curl "https://api.picnichealth.com/v1/medication-statements" \
 ]
 ```
 
-Return a list of medical practitioner objects
+Return a list of medication statement objects
 
 #### HTTP Request
 `GET https://api.picnichealth.com/v1/medication-statements`
@@ -191,7 +191,7 @@ curl -X DELETE "https://api.picnichealth.com/v1/medication-statements/50f372c6-1
 }
 ```
 
-Permanently delete a medical practitioner
+Permanently delete a medication statement
 
 #### HTTP Request
 `DELETE https//api.picnichealth.com/v1/medication-statements/:id`

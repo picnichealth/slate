@@ -181,7 +181,7 @@ component | Array of [LabTestResult](#lab-test-results) | The component lab test
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/observations" \
+curl -X POST "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
   -d effectiveDate="2015-10-19" \
   -d component='[ { object: "LabTestResult", referenceId: "14f360b1-c5ae-40b2-967f-5670315295e0" } ]' \
   -H "Authorization: YOUR_API_KEY" \
@@ -210,9 +210,9 @@ curl -X POST "https://api.picnichealth.com/v1/observations" \
 ```
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/observations`
+`POST https://api.picnichealth.com/v1/observations/:id`
 
-Create a new observation object.
+Update an existing observation object.
 
 #### URL Parameters
 Parameter | Data Type | Description

@@ -1,4 +1,4 @@
-## Codes
+# Codes
 Currently, PicnicHealth uses the following standard code systems for each encounter and encounter items:
 
 * <a target="_blank" href="http://loinc.org/">LOINC</a> for [Observation](#observations) and [LabTestResult](#lab-test-results) objects

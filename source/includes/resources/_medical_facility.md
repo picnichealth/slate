@@ -1,4 +1,4 @@
-## Medical Facilities
+# Medical Facilities
 This is an object representing a medical facility
 
 ### Get a specific medical facility

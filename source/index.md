@@ -5,18 +5,25 @@ includes:
   - authentication
   - pagination
   - including_nested_objects
-  - resources
   - resources/medical_facility
   - resources/medical_practitioner
   - resources/patient
-  - resources/encounter
-  - resources/medication_statement
-  - resources/imaging_study
   - resources/lab_test_result
-  - resources/observation
-  - resources/diagnostic_report
-  - resources/data_source
+  - resources/encounters/encounter
+  - resources/encounters/examination
+  - resources/encounters/consult
+  - resources/encounters/procedure
+  - resources/encounters/pathology_study
+  - resources/encounters/imaging_study
+  - resources/encounters/genetic_screen
+  - resources/encounters/diagnostic_report
+  - resources/encounter_items/encounter_item
+  - resources/encounter_items/text_section
+  - resources/encounter_items/medication_statement
+  - resources/encounter_items/observation
+  - resources/encounter_items/problem
   - resources/code
+  - data_sources
   - errors
 
 search: true

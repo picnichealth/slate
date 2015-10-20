@@ -1,4 +1,4 @@
-## Patients
+# Patients
 This is an object representing a patient.
 
 ### Get a specific patient
