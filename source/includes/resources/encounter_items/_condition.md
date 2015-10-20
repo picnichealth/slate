@@ -66,16 +66,16 @@ curl "https://api.picnichealth.com/v1/conditions" \
 ]
 ```
 
-Return a list of problem objects
+Return a list of condition objects
 
 #### HTTP Request
-`GET https://api.picnichealth.com/v1/problems`
+`GET https://api.picnichealth.com/v1/conditions`
 
-### Create a problem
+### Create a condition
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/problems" \
+curl -X POST "https://api.picnichealth.com/v1/conditions" \
   -d encounter='{ "object": "Code", "referenceId:": "72314206-32df-4777-9a26-73b37bae9a5a" }' \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
@@ -106,11 +106,11 @@ Parameter | Data Type | Description
 encounter | [Encounter](#encounters) | The encounter when the condition was recorded
 coding | [Code](#codes) | The coding of the condition
 
-### Update an medication
+### Update a condition
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/problems/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
+curl -X POST "https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
   -d coding='{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }' \
   -H "Authorization: YOUR_API_KEY"
 ```
@@ -133,9 +133,9 @@ curl -X POST "https://api.picnichealth.com/v1/problems/50f372c6-1aeb-4b21-9fbe-b
 ```
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/problems/:id`
+`POST https://api.picnichealth.com/v1/conditions/:id`
 
-Update a medical practitioner
+Update a condition
 
 #### URL Parameters
 Parameter | Data Type | Description
@@ -143,11 +143,11 @@ Parameter | Data Type | Description
 encounter | [Encounter](#encounters) | The encounter when the condition was recorded
 coding | [Code](#codes) | The coding of the condition
 
-### Delete a problem
+### Delete a condition
 > Example request:
 
 ```shell
-curl -X DELETE "https://api.picnichealth.com/v1/problems/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
+curl -X DELETE "https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
   -H "Authorization: YOUR_API_KEY
 ```
 

@@ -43,7 +43,7 @@ Return a genetic screen
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-id | String | The ID of the genetic screens to be retrieved.
+id | String | The ID of the genetic screen to be retrieved.
 
 
 ### List genetic screens

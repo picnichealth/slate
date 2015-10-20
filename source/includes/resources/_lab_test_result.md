@@ -142,9 +142,9 @@ curl -X POST "https://api.picnichealth.com/v1/lab-test-results" \
 ```
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/medication-statements`
+`POST https://api.picnichealth.com/v1/lab-test-results`
 
-Create a new medication statement object.
+Create a new lab test result object.
 
 #### URL Parameters
 Parameter | Data Type | Description
@@ -166,7 +166,7 @@ referenceRangePositiveOrNegativeValue | String | The reference value of positive
 referenceRangeTextValue | String | The text value of the reference range
 resultUnit | String | The unit of the lab test result
 important | Integer | The positive integer indicating the importance of the lab test result. The value `0` is the most important.
-coding | [Code](#codes) | The code for the lab test result. This is usually referenced to a LOINC code. Check [Coding](#codes) for more detail.
+coding | [Code](#codes) | The code for the lab test result. This is usually referenced to a LOINC code.
 
 ### Update a lab test result
 > Example request:
@@ -232,13 +232,13 @@ referenceRangePositiveOrNegativeValue | String | The reference value of positive
 referenceRangeTextValue | String | The text value of the reference range
 resultUnit | String | The unit of the lab test result
 important | Integer | The positive integer indicating the importance of the lab test result. The value `0` is the most important.
-coding | [Code](#codes) | The code for the lab test result. This is usually referenced to a LOINC code. Check [Coding](#codes) for more detail.
+coding | [Code](#codes) | The code for the lab test result. This is usually referenced to a LOINC code.
 
 ### Delete a lab test result
 > Example request:
 
 ```shell
-curl -X DELETE "https://api.picnichealth.com/v1/medication-statements/133651e7-2ada-45bd-91ab-d91fde4612fa" \
+curl -X DELETE "https://api.picnichealth.com/v1/lab-test-results/133651e7-2ada-45bd-91ab-d91fde4612fa" \
   -H "Authorization: YOUR_API_KEY
 ```
 

@@ -76,7 +76,7 @@ id | String | The ID of the observation to be retrieved.
 > Example request:
 
 ```shell
-curl "https://api.picnichealth.com/v1/diagnostic-reports" \
+curl "https://api.picnichealth.com/v1/observations" \
   -H "Authorization: YOUR_API_KEY"
 ```
 

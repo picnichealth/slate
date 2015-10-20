@@ -137,7 +137,7 @@ curl -X POST "https://api.picnichealth.com/v1/procedures" \
 #### HTTP Request
 `POST https://api.picnichealth.com/v1/procedures`
 
-Create a new imaging study object.
+Create a new procedure object.
 
 #### URL Parameters
 Parameter | Data Type | Description
@@ -200,7 +200,7 @@ subtitle | String | The subtitle of the procedure
 notes | Array of [TextSection](#text-sections) | The notes for the procedure
 
 
-### Delete an procedure
+### Delete a procedure
 > Example request:
 
 ```shell

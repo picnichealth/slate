@@ -31,7 +31,7 @@ Return a text section object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-id | The ID of the text section to be retrieved.
+id | String | The ID of the text section to be retrieved.
 
 
 ### List text sections

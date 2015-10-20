@@ -2,8 +2,6 @@
 This is an object representing a diagnostic report. A `DiagnosticReport` object includes
 
 * Laborary (Clinical Chemistry, Hematology, Migrobiology, etc.)
-* Pathology / Histopathology /related disciplines
-* Imaging Investigations (X-ray, CT, MRI etc.)
 * Other diagnostics - Cardiology, Gastroenterology etc.
 
 ### Get a specific diagnostic report
@@ -43,10 +41,6 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781
       "referenceId": "ef45c193-2712-4b0e-b329-3364c19f7233"
     }
   ],
-  "imagingStudy": {
-    "object": "ImagingStudy",
-    "referenceId": "c1c66e17-f31d-481f-81a5-3b8712eda46f"
-  },
   "conclusion": null,
   "presentedForm": {
     "object": "MedicalRecordPdf",
@@ -103,10 +97,6 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports" \
         "referenceId": "ef45c193-2712-4b0e-b329-3364c19f7233"
       }
     ],
-    "imagingStudy": {
-      "object": "ImagingStudy",
-      "referenceId": "c1c66e17-f31d-481f-81a5-3b8712eda46f"
-    },
     "presentedForm": {
       "object": "DataSource",
       "referenceId": "06aa180e-f3ba-4614-a4a6-2a11debad0e0"
@@ -146,7 +136,6 @@ curl -X POST "https://api.picnichealth.com/v1/diagnostic-reports" \
     "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf"
   },
   "result": null,
-  "imagingStudy": null,
   "conclusion": null,
   "presentedForm": null
 }
@@ -155,7 +144,7 @@ curl -X POST "https://api.picnichealth.com/v1/diagnostic-reports" \
 #### HTTP Request
 `POST https://api.picnichealth.com/v1/diagnostic-reports`
 
-Create a new observation object.
+Create a new diagnostic report object.
 
 #### URL Parameters
 Parameter | Data Type | Description
@@ -163,7 +152,6 @@ Parameter | Data Type | Description
 effectiveDate | String | The date of the observation
 performer | [MedicalPractitioner](#medical-practitioners) | The medical practitioner who performed the diagnostics
 result | Array of [Observation](#observations) | The lab test panels for the diagnostic report
-imagingStudy | [ImagingStudy](#imaging-studies) | The imaging study for the diagnostic report
 conclusion | String | The conclusion or narrative of the diagnostic report
 presentedForm | [DataSource](#data-sources) | The data source of the diagnostic report
 
@@ -189,7 +177,6 @@ curl -X POST "https://api.picnichealth.com/v1/diagnostic-reports/b08c2faf-8cde-4
     "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf"
   },
   "result": null,
-  "imagingStudy": null,
   "conclusion": null,
   "presentedForm": null
 }
@@ -198,15 +185,14 @@ curl -X POST "https://api.picnichealth.com/v1/diagnostic-reports/b08c2faf-8cde-4
 #### HTTP Request
 `POST https://api.picnichealth.com/v1/diagnostic-reports/:id`
 
-Update a new diagnostic report object.
+Update an existing diagnostic report object.
 
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the observation
+effectiveDate | String | The date of the diagnostic report
 performer | [MedicalPractitioner](#medical-practitioners) | The medical practitioner who performed the diagnostics
 result | Array of [Observation](#observations) | The lab test panels for the diagnostic report
-imagingStudy | [ImagingStudy](#imaging-studies) | The imaging study for the diagnostic report
 conclusion | String | The conclusion or narrative of the diagnostic report
 presentedForm | [DataSource](#data-sources) | The data source of the diagnostic report
 
@@ -214,7 +200,7 @@ presentedForm | [DataSource](#data-sources) | The data source of the diagnostic 
 > Example request:
 
 ```shell
-curl -X DELETE "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
+curl -X DELETE "https://api.picnichealth.com/v1/diagnostic-reports/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
   -H "Authorization: YOUR_API_KEY
 ```
 

@@ -43,7 +43,7 @@ curl "https://api.picnichealth.com/v1/imaging-studies/d3a0b758-47ca-414b-9f9e-40
   ]
 }
 ```
-Return a imaging study object.
+Return an imaging study object.
 
 #### HTTP Request
 `GET https://api.picnichealth.com/v1/imaging-studies/:id`
@@ -164,7 +164,7 @@ series | Array of objects | The series of the imaging study
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/observations/1871ebca-d7f2-47e3-bbaf-72e87e022cdb" \
+curl -X POST "https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47e3-bbaf-72e87e022cdb" \
   -d effectiveDate="2015-10-19" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
@@ -197,7 +197,7 @@ curl -X POST "https://api.picnichealth.com/v1/observations/1871ebca-d7f2-47e3-bb
 ```
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/observations`
+`POST https://api.picnichealth.com/v1/imaging-studies`
 
 Update an existing imaging study object.
 
@@ -231,7 +231,7 @@ curl -X DELETE "https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47
 }
 ```
 
-Permanently delete a observation
+Permanently delete an imaging study
 
 #### HTTP Request
 `DELETE https//api.picnichealth.com/v1/imaging-studies/:id`

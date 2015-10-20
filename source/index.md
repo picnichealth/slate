@@ -21,7 +21,7 @@ includes:
   - resources/encounter_items/text_section
   - resources/encounter_items/medication_statement
   - resources/encounter_items/observation
-  - resources/encounter_items/problem
+  - resources/encounter_items/condition
   - resources/code
   - data_sources
   - errors

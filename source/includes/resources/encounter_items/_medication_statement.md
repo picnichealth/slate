@@ -29,7 +29,7 @@ curl "https://api.picnichealth.com/v1/medication-statements/50f372c6-1aeb-4b21-9
   "note": "Below 325mg: negative personality changes. Above 350mg: slow increase in tremors"
 }
 ```
-Return a medical practitioner object.
+Return a medication statement object.
 
 #### HTTP Request
 `GET https://api.picnichealth.com/v1/medication-statements/:id`
@@ -37,10 +37,10 @@ Return a medical practitioner object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-id | The ID of the medication to be retrieved.
+id | The ID of the medication statement to be retrieved.
 
 
-### List medications
+### List medication statements
 > Example request:
 
 ```shell
@@ -129,7 +129,7 @@ medicationCoding | [Code](#codes) | The coding of the medcation
 instruction | String | The instruction for the medication
 note | String | The note for the medication statement
 
-### Update an medication
+### Update a medication statement
 > Example request:
 
 ```shell
@@ -162,7 +162,7 @@ curl -X POST "https://api.picnichealth.com/v1/medication-statements/50f372c6-1ae
 #### HTTP Request
 `POST https://api.picnichealth.com/v1/medication-statements/:id`
 
-Update a medical practitioner
+Update a medication statement
 
 #### URL Parameters
 Parameter | Data Type | Description

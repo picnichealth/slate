@@ -138,7 +138,7 @@ curl -X POST "https://api.picnichealth.com/v1/pathology-studies" \
 #### HTTP Request
 `POST https://api.picnichealth.com/v1/pathology-studies`
 
-Create a new imaging study object.
+Create a new pathology study object.
 
 #### URL Parameters
 Parameter | Data Type | Description

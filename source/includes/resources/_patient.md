@@ -131,7 +131,7 @@ curl -X POST "https://api.picnichealth.com/v1/patients" \
 
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/medical-practitioners`
+`POST https://api.picnichealth.com/v1/patients`
 
 Create a new patient object.
 
@@ -159,7 +159,7 @@ ssLastFourDigits | String | The last four digits of the patient social security 
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/medical-practitioners/30febccb-00d0-41eb-ad15-9041a734cafa" \
+curl -X POST "https://api.picnichealth.com/v1/patients/30febccb-00d0-41eb-ad15-9041a734cafa" \
   -d fullName="Dennis Thome" \
   -d email="DennisAThome@dayrep.com" \
   -d activatedAt="2015-10-17T07:09:46.555Z" \
@@ -230,7 +230,7 @@ ssLastFourDigits | String | The last four digits of the patient social security 
 > Example request:
 
 ```shell
-curl -X DELETE "https://api.picnichealth.com/v1/medical-practitioners/30febccb-00d0-41eb-ad15-9041a734cafa" \
+curl -X DELETE "https://api.picnichealth.com/v1/patients/30febccb-00d0-41eb-ad15-9041a734cafa" \
   -H "Authorization: YOUR_API_KEY
 ```
 
