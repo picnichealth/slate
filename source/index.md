@@ -10,11 +10,13 @@ includes:
   - resources/medical_practitioner
   - resources/patient
   - resources/encounter
-  - resources/coding
   - resources/medication_statement
+  - resources/imaging_study
   - resources/lab_test_result
   - resources/observation
   - resources/diagnostic_report
+  - resources/data_source
+  - resources/code
   - errors
 
 search: true

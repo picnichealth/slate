@@ -37,8 +37,8 @@ Return a patient object.
 `GET https://api.picnichealth.com/v1/patients/:id`
 
 #### URL Parameters
-Parameter | Description
---------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 id | The ID of the patient to be retrieved.
 
 
@@ -136,8 +136,8 @@ curl -X POST "https://api.picnichealth.com/v1/patients" \
 Create a new patient object.
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 email | String | The email address of the patient
 fullName | String | The full name of the patient
 activatedAt | String | The date and time of the patient account activation
@@ -208,8 +208,8 @@ curl -X POST "https://api.picnichealth.com/v1/medical-practitioners/30febccb-00d
 Update a patient
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 email | String | The email address of the patient
 fullName | String | The full name of the patient
 activatedAt | String | The date and time of the patient account activation
@@ -249,6 +249,6 @@ Permanently delete a patient
 `DELETE https//api.picnichealth.com/v1/patients/:id`
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
-id | String | The ID of the patient
+Parameter | Data Type | Description
+--------- | --------- | -----------
+id | String | The ID of the patient to delete

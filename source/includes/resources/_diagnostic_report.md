@@ -108,7 +108,7 @@ curl "https://api.picnichealth.com/v1/diagnostic-reports" \
       "referenceId": "c1c66e17-f31d-481f-81a5-3b8712eda46f"
     },
     "presentedForm": {
-      "object": "MedicalRecordPdf",
+      "object": "DataSource",
       "referenceId": "06aa180e-f3ba-4614-a4a6-2a11debad0e0"
     }
   },
@@ -124,12 +124,109 @@ Return a list of diagnostic report objects
 `GET https://api.picnichealth.com/v1/diagnostic-reports`
 
 ### Create a diagnostic report
-TODO
+> Example request:
+
+```shell
+curl -X POST "https://api.picnichealth.com/v1/diagnostic-reports" \
+  -d effectiveDate="2015-10-17" \
+  -d performer='{ "object": "MedicalPractitioner", "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf" }' \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+> Example response:
+
+```json
+{
+  "object": "DiagnosticReport",
+  "id": "b08c2faf-8cde-4075-b25f-aed2ebe0f657",
+  "effectiveDate": "2015-10-17",
+  "performer": {
+    "object": "MedicalPractitioner",
+    "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf"
+  },
+  "result": null,
+  "imagingStudy": null,
+  "conclusion": null,
+  "presentedForm": null
+}
+```
+
+#### HTTP Request
+`POST https://api.picnichealth.com/v1/diagnostic-reports`
+
+Create a new observation object.
+
+#### URL Parameters
+Parameter | Data Type | Description
+--------- | --------- | -----------
+effectiveDate | String | The date of the observation
+performer | [MedicalPractitioner](#medical-practitioners) | The medical practitioner who performed the diagnostics
+result | Array of [Observation](#observations) | The lab test panels for the diagnostic report
+imagingStudy | [ImagingStudy](#imaging-studies) | The imaging study for the diagnostic report
+conclusion | String | The conclusion or narrative of the diagnostic report
+presentedForm | [DataSource](#data-sources) | The data source of the diagnostic report
 
 ### Update diagnostic report
-TODO
+> Example request:
+
+```shell
+curl -X POST "https://api.picnichealth.com/v1/diagnostic-reports/b08c2faf-8cde-4075-b25f-aed2ebe0f657" \
+  -d effectiveDate="2015-10-19" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+> Example response:
+
+```json
+{
+  "object": "DiagnosticReport",
+  "id": "b08c2faf-8cde-4075-b25f-aed2ebe0f657",
+  "effectiveDate": "2015-10-19",
+  "performer": {
+    "object": "MedicalPractitioner",
+    "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf"
+  },
+  "result": null,
+  "imagingStudy": null,
+  "conclusion": null,
+  "presentedForm": null
+}
+```
+
+#### HTTP Request
+`POST https://api.picnichealth.com/v1/diagnostic-reports/:id`
+
+Update a new diagnostic report object.
+
+#### URL Parameters
+Parameter | Data Type | Description
+--------- | --------- | -----------
+effectiveDate | String | The date of the observation
+performer | [MedicalPractitioner](#medical-practitioners) | The medical practitioner who performed the diagnostics
+result | Array of [Observation](#observations) | The lab test panels for the diagnostic report
+imagingStudy | [ImagingStudy](#imaging-studies) | The imaging study for the diagnostic report
+conclusion | String | The conclusion or narrative of the diagnostic report
+presentedForm | [DataSource](#data-sources) | The data source of the diagnostic report
 
 ### Delete diagnostic report
+> Example request:
+
+```shell
+curl -X DELETE "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
+  -H "Authorization: YOUR_API_KEY
+```
+
+> Example response:
+
+```json
+{
+  "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
+  "deleted": true
+}
+```
+
 Permanently delete a diagnostic report
 
 #### HTTP Request
@@ -138,4 +235,4 @@ Permanently delete a diagnostic report
 #### URL Parameters
 Parameter | DataType | Description
 --------- | -------- | -----------
-id | String | The ID of the diagnostic report
+id | String | The ID of the diagnostic report to delete

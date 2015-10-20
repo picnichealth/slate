@@ -27,9 +27,9 @@ Return a medical facility object.
 `GET https://api.picnichealth.com/v1/medical-facilities/:id`
 
 #### URL Parameters
-Parameter | Description
---------- | -----------
-id | The ID of the medical facility to be retrieved.
+Parameter | Data Type | Description
+--------- | --------- | -----------
+id | String | The ID of the medical facility to be retrieved.
 
 
 ### List medical facilities
@@ -94,8 +94,8 @@ curl -X POST "https://api.picnichealth.com/v1/medical-facilities" \
 Create a new medical facility object.
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 name | String | The name of the medical facility
 address | String | The address of the medical facility
 phone | String | The phone number of the medical facility
@@ -132,8 +132,8 @@ curl -X POST "https://api.picnichealth.com/v1/medical-facilities/3ed5b72f-6214-4
 Update a medical facility
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 id | String | The ID of the medical facility
 name | String | The name of the medical facility
 address | String | The address of the medical facility
@@ -163,6 +163,6 @@ Permanently delete a medical facility
 `DELETE https//api.picnichealth.com/v1/medical-facilities/:id`
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
-id | String | The ID of the medical facility
+Parameter | Data Type | Description
+--------- | --------- | -----------
+id | String | The ID of the medical facility to delete

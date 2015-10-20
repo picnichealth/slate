@@ -27,9 +27,9 @@ Return a medical practitioner object.
 `GET https://api.picnichealth.com/v1/medical-practitioners/:id`
 
 #### URL Parameters
-Parameter | Description
---------- | -----------
-id | The ID of the medical practitioner to be retrieved.
+Parameter | Data Type | Description
+--------- | --------- | -----------
+id | String | The ID of the medical practitioner to be retrieved.
 
 ### List medical practitioners
 > Example request:
@@ -94,8 +94,8 @@ curl -X POST "https://api.picnichealth.com/v1/medical-practitioners" \
 Create a new medical practitioner object.
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 name | String | The name of the medical practitioner
 address | String | The address of the medical practitioner
 speciality | String | The specialty of the medical practitioner
@@ -133,8 +133,8 @@ curl -X POST "https://api.picnichealth.com/v1/medical-practitioners/3ed5b72f-621
 Update a medical practitioner
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 name | String | The name of the medical practitioner
 address | String | The address of the medical practitioner
 speciality | String | The specialty of the medical practitioner
@@ -163,6 +163,6 @@ Permanently delete a medical practitioner
 `DELETE https//api.picnichealth.com/v1/medical-practitioners/:id`
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
-id | String | The ID of the medical practitioner
+Parameter | Data Type | Description
+--------- | --------- | -----------
+id | String | The ID of the medical practitioner to delete

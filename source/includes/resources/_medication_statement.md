@@ -35,8 +35,8 @@ Return a medical practitioner object.
 `GET https://api.picnichealth.com/v1/medication-statements/:id`
 
 #### URL Parameters
-Parameter | Description
---------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 id | The ID of the medication to be retrieved.
 
 
@@ -120,12 +120,12 @@ curl -X POST "https://api.picnichealth.com/v1/medication-statements" \
 Create a new medication statement object.
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 patient | Patient | The patient with whom the medication is associated
 status | String | The status of the medication
 effectiveDate | String | The date of the medication recorded
-medicationCoding | Code | The coding of the medcation
+medicationCoding | [Code](#codes) | The coding of the medcation
 instruction | String | The instruction for the medication
 note | String | The note for the medication statement
 
@@ -134,7 +134,6 @@ note | String | The note for the medication statement
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/medication-statements/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
-  -d id="50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e",
   -d note="Take 2 cap by mouth 2 times a day before meals"
   -H "Authorization: YOUR_API_KEY"
 ```
@@ -166,12 +165,12 @@ curl -X POST "https://api.picnichealth.com/v1/medication-statements/50f372c6-1ae
 Update a medical practitioner
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
+Parameter | Data Type | Description
+--------- | --------- | -----------
 patient | Patient | The patient with whom the medication is associated
 status | String | The status of the medication
 effectiveDate | String | The date of the medication recorded
-medicationCoding | Code | The coding of the medcation
+medicationCoding | [Code](#codes) | The coding of the medcation
 instruction | String | The instruction for the medication
 note | String | The note for the medication statement
 
@@ -198,6 +197,6 @@ Permanently delete a medical practitioner
 `DELETE https//api.picnichealth.com/v1/medication-statements/:id`
 
 #### URL Parameters
-Parameter | DataType | Description
---------- | -------- | -----------
-id | String | The ID of the medication statements
+Parameter | Data Type | Description
+--------- | --------- | -----------
+id | String | The ID of the medication statement to delete
