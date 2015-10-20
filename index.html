@@ -42,16 +42,16 @@
 <p>To authorize, use this code:</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
+curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span class="se">\</span>
   -H <span class="s2">"api_key: YOUR_API_KEY"</span>
 </code></pre>
 
-<p>PicnicHealth uses API keys to allow access to the API. Please contact us for the API key.</p>
+<p>PicnicHealth uses API keys to allow access to the API. Please <a target="_blank" href="https://picnichealth.com/contact">contact us</a> for the API key.</p>
 
-<p>PicnicHealth expects for the API key to be included in all API requests to the server in the header.</p>
+<p>PicnicHealth expects the API key to be included in all API requests to the server in the header.</p>
 
           <h1 id="pagination">Pagination</h1>
-<pre class="highlight shell"><code>curl GET https://api.picnichealth.com/v1/medical-facilities?limit<span class="o">=</span>10&amp;offset<span class="o">=</span>2 <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/medical-facilities?limit=10&amp;offset=2"</span> <span class="se">\</span>
   -H <span class="s2">"api_key: YOUR_API_KEY"</span>
 </code></pre>
 
@@ -75,18 +75,18 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
           <h1 id="including-nested-objects">Including Nested Objects</h1>
 
+<blockquote>
+<p>For example, to include performer and result in a diagnostic report</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781-bccc3707932d?include=performer,result.components"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+
 <p>By default, the nested objects returned from the API are referenced in the following form:</p>
 
 <p><code class="prettyprint">{ &quot;object&quot;: &quot;OBJECT_MODEL_NAME&quot;, &quot;referenceId&quot;: &quot;OBJECT_ID&quot; }</code></p>
 
-<p>These nested objects can be included in the API response by using the url query parameter &lsquo;include&rsquo;. You can include multiple nested objects at once by joining the object&rsquo;s property separated by commas. Also deeper nested objects can be included by joining the child and decendent&rsquo;s properties separated by comma.</p>
-
-<blockquote>
-<p>For example, to include performer and result in a diagnostic report</p>
-</blockquote>
-<pre class="highlight plaintext"><code>curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781-bccc3707932d?include=performer,result.components" \
-  -H "Authorization: YOUR_API_KEY"
-</code></pre>
+<p>These nested objects can be included in the API response by using the url query parameter <code class="prettyprint">include</code>. You can include multiple nested objects at once by joining the object&rsquo;s property separated by commas. Also deeper nested objects can be included by joining the child and decendants&rsquo; properties separated by commas.</p>
 
           <h1 id="medical-facilities">Medical Facilities</h1>
 
@@ -735,7 +735,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/medical-practitioners</code></p>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/patients</code></p>
 
 <p>Create a new patient object.</p>
 
@@ -830,7 +830,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/medical-practitioners/30febccb-00d0-41eb-ad15-9041a734cafa"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/patients/30febccb-00d0-41eb-ad15-9041a734cafa"</span> <span class="se">\</span>
   -d <span class="nv">fullName</span><span class="o">=</span><span class="s2">"Dennis Thome"</span> <span class="se">\</span>
   -d <span class="nv">email</span><span class="o">=</span><span class="s2">"DennisAThome@dayrep.com"</span> <span class="se">\</span>
   -d <span class="nv">activatedAt</span><span class="o">=</span><span class="s2">"2015-10-17T07:09:46.555Z"</span> <span class="se">\</span>
@@ -969,7 +969,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/medical-practitioners/30febccb-00d0-41eb-ad15-9041a734cafa"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/patients/30febccb-00d0-41eb-ad15-9041a734cafa"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY
 </span></code></pre>
 
@@ -1167,9 +1167,9 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/medication-statements</code></p>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/lab-test-results</code></p>
 
-<p>Create a new medication statement object.</p>
+<p>Create a new lab test result object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -1268,7 +1268,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <tr>
 <td>coding</td>
 <td><a href="#codes">Code</a></td>
-<td>The code for the lab test result. This is usually referenced to a LOINC code. Check <a href="#codes">Coding</a> for more detail.</td>
+<td>The code for the lab test result. This is usually referenced to a LOINC code.</td>
 </tr>
 </tbody></table>
 
@@ -1415,7 +1415,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <tr>
 <td>coding</td>
 <td><a href="#codes">Code</a></td>
-<td>The code for the lab test result. This is usually referenced to a LOINC code. Check <a href="#codes">Coding</a> for more detail.</td>
+<td>The code for the lab test result. This is usually referenced to a LOINC code.</td>
 </tr>
 </tbody></table>
 
@@ -1424,7 +1424,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/medication-statements/133651e7-2ada-45bd-91ab-d91fde4612fa"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/lab-test-results/133651e7-2ada-45bd-91ab-d91fde4612fa"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY
 </span></code></pre>
 
@@ -1933,7 +1933,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">POST https://api.picnichealth.com/v1/consults</code></p>
 
-<p>Create a new imaging study object.</p>
+<p>Create a new consult object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -2269,7 +2269,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">POST https://api.picnichealth.com/v1/procedures</code></p>
 
-<p>Create a new imaging study object.</p>
+<p>Create a new procedure object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -2410,7 +2410,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<h3 id="delete-an-procedure">Delete an procedure</h3>
+<h3 id="delete-a-procedure">Delete a procedure</h3>
 
 <blockquote>
 <p>Example request:</p>
@@ -2606,7 +2606,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">POST https://api.picnichealth.com/v1/pathology-studies</code></p>
 
-<p>Create a new imaging study object.</p>
+<p>Create a new pathology study object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -2834,7 +2834,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return a imaging study object.</p>
+<p>Return an imaging study object.</p>
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -3014,7 +3014,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/observations/1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span> <span class="se">\</span>
   -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -3048,7 +3048,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/observations</code></p>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/imaging-studies</code></p>
 
 <p>Update an existing imaging study object.</p>
 
@@ -3126,7 +3126,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Permanently delete a observation</p>
+<p>Permanently delete an imaging study</p>
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -3205,7 +3205,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <tr>
 <td>id</td>
 <td>String</td>
-<td>The ID of the genetic screens to be retrieved.</td>
+<td>The ID of the genetic screen to be retrieved.</td>
 </tr>
 </tbody></table>
 
@@ -3453,8 +3453,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <ul>
 <li>Laborary (Clinical Chemistry, Hematology, Migrobiology, etc.)</li>
-<li>Pathology / Histopathology /related disciplines</li>
-<li>Imaging Investigations (X-ray, CT, MRI etc.)</li>
 <li>Other diagnostics - Cardiology, Gastroenterology etc.</li>
 </ul>
 
@@ -3496,10 +3494,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef45c193-2712-4b0e-b329-3364c19f7233"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"imagingStudy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1c66e17-f31d-481f-81a5-3b8712eda46f"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalRecordPdf"</span><span class="p">,</span><span class="w">
@@ -3567,10 +3561,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef45c193-2712-4b0e-b329-3364c19f7233"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"imagingStudy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1c66e17-f31d-481f-81a5-3b8712eda46f"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DataSource"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06aa180e-f3ba-4614-a4a6-2a11debad0e0"</span><span class="w">
@@ -3612,7 +3602,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b034557d-5dbe-4812-ab13-4678c1ef8daf"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"imagingStudy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3622,7 +3611,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">POST https://api.picnichealth.com/v1/diagnostic-reports</code></p>
 
-<p>Create a new observation object.</p>
+<p>Create a new diagnostic report object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -3647,11 +3636,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <td>result</td>
 <td>Array of <a href="#observations">Observation</a></td>
 <td>The lab test panels for the diagnostic report</td>
-</tr>
-<tr>
-<td>imagingStudy</td>
-<td><a href="#imaging-studies">ImagingStudy</a></td>
-<td>The imaging study for the diagnostic report</td>
 </tr>
 <tr>
 <td>conclusion</td>
@@ -3688,7 +3672,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b034557d-5dbe-4812-ab13-4678c1ef8daf"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"imagingStudy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3698,7 +3681,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">POST https://api.picnichealth.com/v1/diagnostic-reports/:id</code></p>
 
-<p>Update a new diagnostic report object.</p>
+<p>Update an existing diagnostic report object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -3712,7 +3695,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <tr>
 <td>effectiveDate</td>
 <td>String</td>
-<td>The date of the observation</td>
+<td>The date of the diagnostic report</td>
 </tr>
 <tr>
 <td>performer</td>
@@ -3723,11 +3706,6 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <td>result</td>
 <td>Array of <a href="#observations">Observation</a></td>
 <td>The lab test panels for the diagnostic report</td>
-</tr>
-<tr>
-<td>imagingStudy</td>
-<td><a href="#imaging-studies">ImagingStudy</a></td>
-<td>The imaging study for the diagnostic report</td>
 </tr>
 <tr>
 <td>conclusion</td>
@@ -3746,7 +3724,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/diagnostic-reports/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY
 </span></code></pre>
 
@@ -3828,8 +3806,8 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td>id</td>
+<td>String</td>
 <td>The ID of the text section to be retrieved.</td>
-<td></td>
 </tr>
 </tbody></table>
 
@@ -4058,7 +4036,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return a medical practitioner object.</p>
+<p>Return a medication statement object.</p>
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -4075,12 +4053,12 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The ID of the medication to be retrieved.</td>
+<td>The ID of the medication statement to be retrieved.</td>
 <td></td>
 </tr>
 </tbody></table>
 
-<h3 id="list-medications">List medications</h3>
+<h3 id="list-medication-statements">List medication statements</h3>
 
 <blockquote>
 <p>Example request:</p>
@@ -4204,7 +4182,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<h3 id="update-an-medication">Update an medication</h3>
+<h3 id="update-a-medication-statement">Update a medication statement</h3>
 
 <blockquote>
 <p>Example request:</p>
@@ -4239,7 +4217,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <p><code class="prettyprint">POST https://api.picnichealth.com/v1/medication-statements/:id</code></p>
 
-<p>Update a medical practitioner</p>
+<p>Update a medication statement</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -4418,7 +4396,7 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/diagnostic-reports"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/observations"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 
@@ -4732,18 +4710,18 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>Return a list of problem objects</p>
+<p>Return a list of condition objects</p>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/problems</code></p>
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/conditions</code></p>
 
-<h3 id="create-a-problem">Create a problem</h3>
+<h3 id="create-a-condition">Create a condition</h3>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/problems"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/conditions"</span> <span class="se">\</span>
   -d <span class="nv">encounter</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId:": "72314206-32df-4777-9a26-73b37bae9a5a" }'</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -4790,12 +4768,12 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<h3 id="update-an-medication">Update an medication</h3>
+<h3 id="update-a-condition">Update a condition</h3>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/problems/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
   -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }'</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
@@ -4819,9 +4797,9 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/problems/:id</code></p>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/conditions/:id</code></p>
 
-<p>Update a medical practitioner</p>
+<p>Update a condition</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -4844,12 +4822,12 @@ curl GET https://api.picnichealth.com/v1/END_POINT <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<h3 id="delete-a-problem">Delete a problem</h3>
+<h3 id="delete-a-condition">Delete a condition</h3>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/problems/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY
 </span></code></pre>
 
