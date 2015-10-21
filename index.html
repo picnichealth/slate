@@ -21,7 +21,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <a href="https://www.picnichealth.com"><img src="images/logo.png" /></a>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -245,8 +245,8 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </thead><tbody>
 <tr>
 <td>id</td>
+<td>String</td>
 <td>The ID of the patient to be retrieved.</td>
-<td></td>
 </tr>
 </tbody></table>
 
@@ -314,8 +314,11 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabTestResult"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8d5df8c-67ad-491e-958a-ffdd8913ff6e"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutrophils (%)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"observation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcc0a4c8-5910-4031-889d-d06623d05030"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"textValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"positiveOrNegativeValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"numberValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.2</span><span class="p">,</span><span class="w">
@@ -376,8 +379,11 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabTestResult"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8d5df8c-67ad-491e-958a-ffdd8913ff6e"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutrophils (%)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"observation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcc0a4c8-5910-4031-889d-d06623d05030"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nt">"textValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"positiveOrNegativeValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"numberValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">52.2</span><span class="p">,</span><span class="w">
@@ -417,14 +423,15 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/lab-test-results"</span> <span class="se">\</span>
   -d <span class="nv">name</span><span class="o">=</span><span class="s2">"C-Reactive Protein"</span> <span class="se">\</span>
-  -d <span class="nv">positiveOrNegativeValue</span><span class="o">=</span><span class="s2">"positive"</span> <span class="se">\</span>
-  -d <span class="nv">referenceRangeType</span><span class="o">=</span><span class="s2">"positiveNegative"</span>
-  -d <span class="nv">referenceRangePositiveOrNegativeValue</span><span class="o">=</span><span class="s2">"positive"</span> <span class="se">\</span>
-  -d <span class="nv">important</span><span class="o">=</span>1 <span class="se">\</span>
-  -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId": "98f391e1-eff0-4f1e-98c5-0ddab280b42a" }'</span>,
-  -u YOUR_API_KEY: <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+  -d <span class="nv">observation</span><span class="o">=</span><span class="s1">'{ "object": "Observation", "referenceId": "fcc0a4c8-5910-4031-889d-d06623d05030" }
+  -d positiveOrNegativeValue="positive" \
+  -d referenceRangeType="positiveNegative"
+  -d referenceRangePositiveOrNegativeValue="positive" \
+  -d important=1 \
+  -d coding='</span><span class="o">{</span> <span class="s2">"object"</span>: <span class="s2">"Code"</span>, <span class="s2">"referenceId"</span>: <span class="s2">"98f391e1-eff0-4f1e-98c5-0ddab280b42a"</span> <span class="o">}</span><span class="s1">',
+  -u YOUR_API_KEY: \
+  -H "Content-Type: application/json"
+</span></code></pre>
 
 <blockquote>
 <p>Example response:</p>
@@ -432,8 +439,11 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabTestResult"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133651e7-2ada-45bd-91ab-d91fde4612fa"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-18"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C-Reactive Protein"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"observation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcc0a4c8-5910-4031-889d-d06623d05030"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"textValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"positiveOrNegativeValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positive"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"numberValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -472,14 +482,14 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The collection date of the lab test result</td>
-</tr>
-<tr>
 <td>name</td>
 <td>String</td>
 <td>The name of the lab test result</td>
+</tr>
+<tr>
+<td>observation</td>
+<td><a href="#observations">Observation</a></td>
+<td>The observation which the lab test result belongs to</td>
 </tr>
 <tr>
 <td>textValue</td>
@@ -499,7 +509,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <tr>
 <td>valueRangeType</td>
 <td>Number</td>
-<td>The range type of the value. The value must be one of the following: <code class="prettyprint">exact</code>, <code class="prettyprint">greaterThan</code>, <code class="prettyprint">lessThan</code>, <code class="prettyprint">greaterThanOrEqualTo</code>, <code class="prettyprint">lessThanOrEqualTo</code>, <code class="prettyprint">between</code>, <code class="prettyprint">text</code>, <code class="prettyprint">positiveNegative</code></td>
+<td>The range type of the value. The value must be one of the following: <ul><li><code class="prettyprint">exact</code></li><li><code class="prettyprint">greaterThan</code></li><li><code class="prettyprint">lessThan</code></li><li><code class="prettyprint">greaterThanOrEqualTo</code></li><li><code class="prettyprint">lessThanOrEqualTo</code></li><li><code class="prettyprint">between</code></li><li><code class="prettyprint">text</code></li><li><code class="prettyprint">positiveNegative</code></li></ul></td>
 </tr>
 <tr>
 <td>valueRangeLowValue</td>
@@ -519,7 +529,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <tr>
 <td>referenceRangeType</td>
 <td>String</td>
-<td>The range type of the reference range. The value must be one of the following: <code class="prettyprint">exact</code>, <code class="prettyprint">greaterThan</code>, <code class="prettyprint">lessThan</code>, <code class="prettyprint">greaterThanOrEqualTo</code>, <code class="prettyprint">lessThanOrEqualTo</code>, <code class="prettyprint">between</code>, <code class="prettyprint">text</code>, <code class="prettyprint">positiveNegative</code></td>
+<td>The range type of the reference range. The value must be one of the following: <ul><li><code class="prettyprint">exact</code></li><li><code class="prettyprint">greaterThan</code></li><li><code class="prettyprint">lessThan</code></li><li><code class="prettyprint">greaterThanOrEqualTo</code></li><li><code class="prettyprint">lessThanOrEqualTo</code></li><li><code class="prettyprint">between</code></li><li><code class="prettyprint">text</code></li><li><code class="prettyprint">positiveNegative</code></li></ul></td>
 </tr>
 <tr>
 <td>referenceRangeLowValue</td>
@@ -579,8 +589,11 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabTestResult"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"133651e7-2ada-45bd-91ab-d91fde4612fa"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-18"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C-Reactive Protein"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"observation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcc0a4c8-5910-4031-889d-d06623d05030"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"textValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"positiveOrNegativeValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"negative"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"numberValue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -619,14 +632,14 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The collection date of the lab test result</td>
-</tr>
-<tr>
 <td>name</td>
 <td>String</td>
 <td>The name of the lab test result</td>
+</tr>
+<tr>
+<td>observation</td>
+<td><a href="#observations">Observation</a></td>
+<td>The observation which the lab test result belongs to</td>
 </tr>
 <tr>
 <td>textValue</td>
@@ -646,7 +659,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <tr>
 <td>valueRangeType</td>
 <td>Number</td>
-<td>The range type of the value. The value must be one of the following: <code class="prettyprint">exact</code>, <code class="prettyprint">greaterThan</code>, <code class="prettyprint">lessThan</code>, <code class="prettyprint">greaterThanOrEqualTo</code>, <code class="prettyprint">lessThanOrEqualTo</code>, <code class="prettyprint">between</code>, <code class="prettyprint">text</code>, <code class="prettyprint">positiveNegative</code></td>
+<td>The range type of the value. The value must be one of the following: <ul><li><code class="prettyprint">exact</code></li><li><code class="prettyprint">greaterThan</code></li><li><code class="prettyprint">lessThan</code></li><li><code class="prettyprint">greaterThanOrEqualTo</code></li><li><code class="prettyprint">lessThanOrEqualTo</code></li><li><code class="prettyprint">between</code></li><li><code class="prettyprint">text</code></li><li><code class="prettyprint">positiveNegative</code></li></ul></td>
 </tr>
 <tr>
 <td>valueRangeLowValue</td>
@@ -666,7 +679,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <tr>
 <td>referenceRangeType</td>
 <td>String</td>
-<td>The range type of the reference range. The value must be one of the following: <code class="prettyprint">exact</code>, <code class="prettyprint">greaterThan</code>, <code class="prettyprint">lessThan</code>, <code class="prettyprint">greaterThanOrEqualTo</code>, <code class="prettyprint">lessThanOrEqualTo</code>, <code class="prettyprint">between</code>, <code class="prettyprint">text</code>, <code class="prettyprint">positiveNegative</code></td>
+<td>The range type of the reference range. The value must be one of the following: <ul><li><code class="prettyprint">exact</code></li><li><code class="prettyprint">greaterThan</code></li><li><code class="prettyprint">lessThan</code></li><li><code class="prettyprint">greaterThanOrEqualTo</code></li><li><code class="prettyprint">lessThanOrEqualTo</code></li><li><code class="prettyprint">between</code></li><li><code class="prettyprint">text</code></li><li><code class="prettyprint">positiveNegative</code></li></ul></td>
 </tr>
 <tr>
 <td>referenceRangeLowValue</td>
@@ -752,26 +765,104 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 
 <h1 id="encounters">Encounters</h1>
 
-<h2 id="examinations">Examinations</h2>
-
-<p>This is an object representing an examination.</p>
-
-<h3 id="get-a-specific-examination">Get a specific examination</h3>
+<p>This is an object representing an encounter.</p>
 
 <blockquote>
-<p>Example request:</p>
+<p>End point</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/examinations/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+<pre class="highlight shell"><code><span class="s2">"https://api.picnichealth.com/v1/encounters"</span>
 </code></pre>
+
+<p>An interaction between a patient and healthcare providers to assess the patient health status is represented by an encounter.</p>
+
+<h2 id="encounter-types">Encounter Types</h2>
+
+<p>An encounter can be one of the following types:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Encounter Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.</td>
+      <td>Examination (see <a href="#example-examination">example</a>)</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>Hospitalization (see <a href="#example-hospitalization">example</a>)</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>Procedure (see <a href="#example-procedure">example</a>)</td>
+    </tr>
+    <tr>
+      <td>4.</td>
+      <td>PathologyStudy (see <a href="#example-pathology-study">example</a>)</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan="2"><em>Each of the above encounters can have <a href="#notes">Notes</a>, <a href="#medication-statements">MedicationStatements</a> and <a href="#conditions">Conditions</a> associated with it as child encounter items.</em></td>
+    </tr>
+    <tr>
+      <td>6.</td>
+      <td>ImagingStudy (see <a href="#example-imaging-study">example</a>)</td>
+    </tr>
+    <tr>
+      <td>7.</td>
+      <td>LaboratoryTest (see <a href="#example-laboratory-test">example</a>)</td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td colspan="2"><em>A laborary test is a special encounter reserved for lab test data. An encounter for laboratory tests will only have <a href="#observations">Observations</a> associated with it as child encounter items.</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br/></p>
+
+<p>The following entity relationship diagram illustrates the associations between encounter type and encounter items:</p>
+
+<p><img src="images/picnichealth_entity_relationship.svg"/></p>
+
+<h2 id="get-a-specific-encounter">Get a specific encounter</h2>
+
+<p>Return an encounter</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/encounters/:id</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The ID of the encounter to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="example-examination">Example: Examination</h3>
 
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
@@ -791,290 +882,83 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return an examination</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/examinations/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the examination to be retrieved.</td>
-</tr>
-</tbody></table>
-
-<h3 id="list-examinations">List examinations</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/examinations"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"medicationStatements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"performer"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532b9e57-18ba-4024-8440-1abe5ba17c39"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"82107fa4-10bb-4210-b6d9-ea53bdd46f1d"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912f716a-1a0b-4b08-a397-db70ca6e503d"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Condition"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32f61b2a-b0e2-4b3b-ae93-73797dd1dc62"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return a list of examinations</p>
-
-<h3 id="create-an-examination">Create an examination</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/examinations"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/examinations</code></p>
-
-<p>Create a new imaging study object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the examination</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient</td>
-</tr>
-<tr>
-<td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the examination</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the examination</td>
-</tr>
-</tbody></table>
-
-<h3 id="update-an-examination">Update an examination</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/examinations/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/examinations/:id</code></p>
-
-<p>Update an existing examination object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the examination</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient</td>
-</tr>
-<tr>
-<td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the examination</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the examination</td>
-</tr>
-</tbody></table>
-
-<h3 id="delete-an-examination">Delete an examination</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/examinations/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently delete an examination.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/examinations/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
+<th>Attributes</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>String</td>
-<td>The ID of the examination to delete</td>
+<td>The ID of the encounter</td>
+</tr>
+<tr>
+<td>type</td>
+<td>The type of the encounter</td>
+</tr>
+<tr>
+<td>date</td>
+<td>The date of the encounter</td>
+</tr>
+<tr>
+<td>patient</td>
+<td>The patient</td>
+</tr>
+<tr>
+<td>doctorList</td>
+<td>The list of doctors involved in the encounter</td>
+</tr>
+<tr>
+<td>location</td>
+<td>The location of the encounter</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>The list of notes recorded at the encounter</td>
+</tr>
+<tr>
+<td>medicationStatements</td>
+<td>The list of medication statements recorded at the encounter</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>The list of conditions recorded at the encounter</td>
 </tr>
 </tbody></table>
 
-<h2 id="consults">Consults</h2>
-
-<p>This is an object representing an consult.</p>
-
-<h3 id="get-a-specific-consult">Get a specific consult</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/consults/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
+<h3 id="example-hospitalization">Example: Hospitalization</h3>
 
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consult"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hospitalization"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
@@ -1101,325 +985,69 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"medicationStatements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return an consult</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/consults/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
+<th>Attributes</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>String</td>
-<td>The ID of the consult to be retrieved.</td>
+<td>The ID of the encounter</td>
 </tr>
-</tbody></table>
-
-<h3 id="list-consults">List consults</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/consults"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consult"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consultant"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532b9e57-18ba-4024-8440-1abe5ba17c39"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"referrer"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitoner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consult Note"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return a list of consults</p>
-
-<h3 id="create-a-consult">Create a consult</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/consults"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -d title="Consult Note" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consult"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office Visit"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/consults</code></p>
-
-<p>Create a new consult object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<td>type</td>
+<td>The type of the encounter</td>
 </tr>
-</thead><tbody>
 <tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the consult</td>
+<td>date</td>
+<td>The date of the encounter</td>
 </tr>
 <tr>
 <td>patient</td>
-<td><a href="#patients">Patient</a></td>
 <td>The patient</td>
 </tr>
 <tr>
 <td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
+<td>The list of doctors involved in the encounter</td>
 </tr>
 <tr>
 <td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the consult</td>
-</tr>
-<tr>
-<td>title</td>
-<td>String</td>
-<td>The title of the consult</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>String</td>
-<td>The subtitle of the consult</td>
+<td>The location of the encounter</td>
 </tr>
 <tr>
 <td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the consult</td>
+<td>The list of notes recorded at the encounter</td>
+</tr>
+<tr>
+<td>medicationStatements</td>
+<td>The list of medication statements recorded at the encounter</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>The list of conditions recorded at the encounter</td>
 </tr>
 </tbody></table>
 
-<h3 id="update-a-consult">Update a consult</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/consults/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<h3 id="example-procedure">Example: Procedure</h3>
 
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consult"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"consultant"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office Visit"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/consults/:id</code></p>
-
-<p>Update an existing consult object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the consult</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient</td>
-</tr>
-<tr>
-<td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the consult</td>
-</tr>
-<tr>
-<td>title</td>
-<td>String</td>
-<td>The title of the consult</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>String</td>
-<td>The subtitle of the consult</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the consult</td>
-</tr>
-</tbody></table>
-
-<h3 id="delete-an-consult">Delete an consult</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/consults/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently delete an consult.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/consults/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the consult to delete</td>
-</tr>
-</tbody></table>
-
-<h2 id="procedures">Procedures</h2>
-
-<p>This is an object representing an procedure.</p>
-
-<h3 id="get-a-specific-procedure">Get a specific procedure</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/procedures/1b26577b-04ea-4fc8-895a-1f466b707e63"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procedure"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b26577b-04ea-4fc8-895a-1f466b707e63"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procedure"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
@@ -1446,297 +1074,65 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"medicationStatements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return an procedure</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/procedures/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
+<th>Attributes</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>String</td>
-<td>The ID of the procedure to be retrieved.</td>
+<td>The ID of the encounter</td>
 </tr>
-</tbody></table>
-
-<h3 id="list-procedures">List procedures</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/procedures"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procedure"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1b26577b-04ea-4fc8-895a-1f466b707e63"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"performer"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532b9e57-18ba-4024-8440-1abe5ba17c39"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"requester"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitoner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return a list of procedures</p>
-
-<h3 id="create-a-procedure">Create a procedure</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/procedures"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -u YOUR_API_KEY \
-  -H "Content-Type: application/json"
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procedure"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/procedures</code></p>
-
-<p>Create a new procedure object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<td>type</td>
+<td>The type of the encounter</td>
 </tr>
-</thead><tbody>
 <tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the procedure</td>
+<td>date</td>
+<td>The date of the encounter</td>
 </tr>
 <tr>
 <td>patient</td>
-<td><a href="#patients">Patient</a></td>
 <td>The patient</td>
 </tr>
 <tr>
 <td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
+<td>The list of doctors involved in the encounter</td>
 </tr>
 <tr>
 <td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the procedure</td>
+<td>The location of the encounter</td>
 </tr>
 <tr>
 <td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the procedure</td>
+<td>The list of notes recorded at the encounter</td>
+</tr>
+<tr>
+<td>medicationStatements</td>
+<td>The list of medication statements recorded at the encounter</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>The list of conditions recorded at the encounter</td>
 </tr>
 </tbody></table>
 
-<h3 id="update-a-procedure">Update a procedure</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/procedures/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -u YOUR_API_KEY <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
+<h3 id="example-pathology-study">Example: Pathology Study</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procedure"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/procedures/:id</code></p>
-
-<p>Update an existing procedure object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the procedure</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient</td>
-</tr>
-<tr>
-<td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the procedure</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the procedure</td>
-</tr>
-</tbody></table>
-
-<h3 id="delete-a-procedure">Delete a procedure</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/procedures/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY:
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently delete an procedure.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/procedures/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the procedure to delete</td>
-</tr>
-</tbody></table>
-
-<h2 id="pathology-studies">Pathology Studies</h2>
-
-<p>This is an object representing an pathology study.</p>
-
-<h3 id="get-a-specific-pathology-study">Get a specific pathology study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PathologyStudy"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79689692-b639-4c56-b57e-1528d2550b5e"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PathologyStudy"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
@@ -1761,301 +1157,71 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pathology"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GI Biopsy"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df6f12d9-be67-4644-8a73-6ac9843684df"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"medicationStatements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return a pathology study.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/pathology-studies/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
+<th>Attributes</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>String</td>
-<td>The ID of the pathology study to be retrieved.</td>
+<td>The ID of the encounter</td>
 </tr>
-</tbody></table>
-
-<h3 id="list-pathology-studies">List pathology studies</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/pathology-studies"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PathologyStudy"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79689692-b639-4c56-b57e-1528d2550b5e"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-     </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-       </span><span class="p">{</span><span class="w">
-         </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"performer"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-           </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532b9e57-18ba-4024-8440-1abe5ba17c39"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-       </span><span class="p">{</span><span class="w">
-         </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"referrer"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-           </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitoner"</span><span class="p">,</span><span class="w">
-           </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-       </span><span class="p">}</span><span class="w">
-     </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df6f12d9-be67-4644-8a73-6ac9843684df"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return a list of pathology studies</p>
-
-<h3 id="create-a-pathology-study">Create a pathology study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/pathology-studies"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ object: "Patient", referenceId: "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca" }'</span> <span class="se">\</span>
-  -u YOUR_API_KEY: <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PathologyStudy"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79689692-b639-4c56-b57e-1528d2550b5e"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/pathology-studies</code></p>
-
-<p>Create a new pathology study object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<td>type</td>
+<td>The type of the encounter</td>
 </tr>
-</thead><tbody>
 <tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the pathology study</td>
+<td>date</td>
+<td>The date of the encounter</td>
 </tr>
 <tr>
 <td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient of the pathology study</td>
+<td>The patient</td>
 </tr>
 <tr>
 <td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
+<td>The list of doctors involved in the encounter.</td>
 </tr>
 <tr>
 <td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the pathology study</td>
+<td>The location of the encounter</td>
 </tr>
 <tr>
 <td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the pathology study</td>
+<td>The list of notes recorded at the encounter</td>
+</tr>
+<tr>
+<td>medicationStatements</td>
+<td>The list of medication statements recorded at the encounter</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>The list of conditions recorded at the encounter</td>
 </tr>
 </tbody></table>
 
-<h3 id="update-a-pathology-study">Update a pathology study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -u YOUR_API_KEY: <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<h3 id="example-imaging-study">Example: Imaging Study</h3>
 
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PathologyStudy"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79689692-b639-4c56-b57e-1528d2550b5e"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/pathology-studies/:id</code></p>
-
-<p>Update an existing pathology study object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the pathology study</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient of the pathology study</td>
-</tr>
-<tr>
-<td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the pathology study</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the pathology study</td>
-</tr>
-</tbody></table>
-
-<h3 id="delete-an-pathology-study">Delete an pathology study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79689692-b639-4c56-b57e-1528d2550b5e"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently delete a pathology study.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/pathology-studies/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the pathology study to delete</td>
-</tr>
-</tbody></table>
-
-<h2 id="imaging-studies">Imaging Studies</h2>
-
-<p>This is an object representing an imaging study.</p>
-
-<h3 id="get-a-specific-imaging-study">Get a specific imaging study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/imaging-studies/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad37701d-7228-4904-9945-7c537b2c7848"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa316bf8-6d58-4971-8de2-5d003c582540"</span><span class="w">
@@ -2089,612 +1255,57 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return an imaging study object.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/imaging-studies/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
+<th>Attributes</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>String</td>
-<td>The ID of the imaging study to be retrieved.</td>
+<td>The ID of the encounter</td>
 </tr>
-</tbody></table>
-
-<h3 id="list-imaging-studies">List imaging studies</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/imaging-studies"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad37701d-7228-4904-9945-7c537b2c7848"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa316bf8-6d58-4971-8de2-5d003c582540"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"referrer"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6f821cab-b345-46db-ba1e-e5b7db2e16ed"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"performer"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitoner"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e04e410-2e68-4241-b3e4-c4181af199a4"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"medicalFacility"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d670e59d-b0cf-4ac3-830b-892735301748"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"dicom"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"studyUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.16.840.1.113786.1.661.8.594745134.757"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"viewerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cloud.app.box.com/dicom_viewer/27705542820/manifest.boxdicom?sharedName=onsnmi460st8qlf9q55huv71kre7cxoa"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return a list of imaging study objects</p>
-
-<h3 id="create-an-imaging-study">Create an imaging study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/imaging-studies"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -d dicom='</span><span class="o">[{</span> <span class="s2">"viewerUrl"</span>: <span class="s2">"https://www.medxt.com/docs/pathology_test"</span> <span class="o">}]</span><span class="s1">' \
-  -u YOUR_API_KEY: \
-  -H "Content-Type: application/json"
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"medicalFacility"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dicom"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"studyUid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"viewerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.medxt.com/docs/pathology_test"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/imaging-studies</code></p>
-
-<p>Create a new imaging study object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<td>type</td>
+<td>The type of the encounter</td>
 </tr>
-</thead><tbody>
 <tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the imaging study</td>
+<td>date</td>
+<td>The date of the encounter</td>
 </tr>
 <tr>
 <td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient for whom the imaging study was made</td>
+<td>The patient</td>
 </tr>
 <tr>
 <td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>medicalFaciltiy</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The medical facility where the imaging study was made</td>
-</tr>
-<tr>
-<td>description</td>
-<td>String</td>
-<td>The description of the imaging study</td>
-</tr>
-<tr>
-<td>dicom</td>
-<td>Array of Objects</td>
-<td>The array of objects for dicom</td>
-</tr>
-</tbody></table>
-
-<h3 id="update-an-imaging-study">Update an imaging study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -u YOUR_API_KEY: <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ImagingStudy"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"medicalFacility"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dicom"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"studyUid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"viewerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.medxt.com/docs/pathology_test"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/imaging-studies</code></p>
-
-<p>Update an existing imaging study object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the imaging study</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient for whom the imaging study was made</td>
-</tr>
-<tr>
-<td>doctorList</td>
-<td>Array of Objects</td>
-<td>The list of doctors involved</td>
-</tr>
-<tr>
-<td>medicalFaciltiy</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The medical facility where the imaging study was made</td>
-</tr>
-<tr>
-<td>description</td>
-<td>String</td>
-<td>The description of the imaging study</td>
-</tr>
-<tr>
-<td>dicom</td>
-<td>Array of Objects</td>
-<td>The array of objects for dicom</td>
-</tr>
-</tbody></table>
-
-<h3 id="delete-an-imaging-study">Delete an imaging study</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span> <span class="se">\</span>
-  -u YOUR_API_KEY:
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1871ebca-d7f2-47e3-bbaf-72e87e022cdb"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently delete an imaging study</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/imaging-studies/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the imaging study to delete</td>
-</tr>
-</tbody></table>
-
-<h2 id="genetic-screens">Genetic Screens</h2>
-
-<p>This is an object representing a genetic screen.</p>
-
-<h3 id="get-a-specific-genetic-screen">Get a specific genetic screen</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/genetic-screens/2c5f5800-6bda-4018-9c11-f4275880495b </span><span class="se">\</span><span class="s2">
-  -H "</span>Authorization: YOUR_API_KEY<span class="s2">"
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GeneticScreen"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c5f5800-6bda-4018-9c11-f4275880495b"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return a genetic screen</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/genetic-screens/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the genetic screen to be retrieved.</td>
-</tr>
-</tbody></table>
-
-<h3 id="list-genetic-screens">List genetic screens</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/genetic-screens"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"length"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GeneticScreen"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c5f5800-6bda-4018-9c11-f4275880495b"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextSection"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Return a list of genetic screens</p>
-
-<h3 id="create-a-genetic-screen">Create a genetic screen</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/genetic-screens"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Genetic Screen"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"participant"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/genetic-screens</code></p>
-
-<p>Create a new genetic screen object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the genetic screen</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient of the genetic screen</td>
+<td>The list of doctors involved in the encounter</td>
 </tr>
 <tr>
 <td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the genetic screen</td>
+<td>The location of the encounter</td>
 </tr>
 <tr>
-<td>title</td>
-<td>String</td>
-<td>The title of the genetic screen</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>String</td>
-<td>The subtitle of the genetic screen</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the genetic screen</td>
+<td>dicom</td>
+<td>The list of objects with attributes <code class="prettyprint">studyUid</code> and <code class="prettyprint">viewerUrl</code> representing a dicom image</td>
 </tr>
 </tbody></table>
 
-<h3 id="update-a-genetic-screen">Update a genetic screen</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/genetic-screens/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<h3 id="example-laboratory-test">Example: Laboratory Test</h3>
 
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GeneticScreen"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"participant"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Genetic Screen"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/genetic-screens/:id</code></p>
-
-<p>Update an existing genetic screen object.</p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>effectiveDate</td>
-<td>String</td>
-<td>The date of the genetic screen</td>
-</tr>
-<tr>
-<td>patient</td>
-<td><a href="#patients">Patient</a></td>
-<td>The patient of the genetic screen</td>
-</tr>
-<tr>
-<td>location</td>
-<td><a href="#medical-facilities">MedicalFacility</a></td>
-<td>The location of the genetic screen</td>
-</tr>
-<tr>
-<td>title</td>
-<td>String</td>
-<td>The title of the genetic screen</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>String</td>
-<td>The subtitle of the genetic screen</td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Array of <a href="#text-sections">TextSection</a></td>
-<td>The notes for the genetic screen</td>
-</tr>
-</tbody></table>
-
-<h3 id="delete-an-genetic-screen">Delete an genetic screen</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/genetic-screens/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently delete a genetic screen.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/genetic-screens/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the genetic screen to delete</td>
-</tr>
-</tbody></table>
-
-<h2 id="laboratory-tests">Laboratory Tests</h2>
-
-<p>This is an object representing a laboratory test. A <code class="prettyprint">LaboratoryTest</code> object includes Clinical Chemistry, Hematology, Migrobiology, etc.</p>
-
-<h3 id="get-a-specific-laboratory-test">Get a specific laboratory test</h3>
-
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/laboratory-tests/a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
-</code></pre>
-
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LaboratoryTest"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LaboratoryTest"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2714,40 +1325,52 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
       </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef45c193-2712-4b0e-b329-3364c19f7233"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalRecordPdf"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06aa180e-f3ba-4614-a4a6-2a11debad0e0"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return a laboratory test object.</p>
-
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/laboratory-tests/:id</code></p>
-
-<h4 id="url-parameters">URL Parameters</h4>
-
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attributes</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The ID of the laboratory test to be retrieved.</td>
+<td>The ID of the encounter</td>
+</tr>
+<tr>
+<td>type</td>
+<td>The type of the encounter</td>
+</tr>
+<tr>
+<td>date</td>
+<td>The date of the encounter</td>
+</tr>
+<tr>
+<td>patient</td>
+<td>The patient</td>
+</tr>
+<tr>
+<td>doctorList</td>
+<td>The list of doctors involved in the encounter</td>
+</tr>
+<tr>
+<td>result</td>
+<td>The list of observations recorded in the encounter</td>
+</tr>
+<tr>
+<td>conclusion</td>
+<td>The summary of the laboratory test</td>
 </tr>
 </tbody></table>
 
-<h3 id="list-laboratory-tests">List laboratory tests</h3>
+<h2 id="list-encounters">List encounters</h2>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/laboratory-tests"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/encounters"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 
@@ -2760,35 +1383,49 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
   </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LaboratoryTest"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a15ad9e5-d96b-4ebf-9781-bccc3707932d"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad5ea88e-a79a-4431-98ae-45b3ef254f8a"</span><span class="w">
+      </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9899e9d3-be6e-4f83-942d-cd755722c672"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae8a6262-33d1-46f1-b8d9-ca2dbd42bef6"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f2eaea8-c2a4-43e1-ba70-44f3b59c7052"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ef45c193-2712-4b0e-b329-3364c19f7233"</span><span class="w">
+          </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"performer"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"doctor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"532b9e57-18ba-4024-8440-1abe5ba17c39"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DataSource"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06aa180e-f3ba-4614-a4a6-2a11debad0e0"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalFacility"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00993db8-fc4e-4276-9e41-dbeb3e72fbfd"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Note"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8ca8f80d-951a-46af-bc70-8ccd6e0955b0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"medicationStatements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"82107fa4-10bb-4210-b6d9-ea53bdd46f1d"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912f716a-1a0b-4b08-a397-db70ca6e503d"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Condition"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32f61b2a-b0e2-4b3b-ae93-73797dd1dc62"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
@@ -2797,46 +1434,46 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Return a list of laboratory test objects</p>
+<p>Return a list of encounters</p>
 
-<h4 id="http-request">HTTP Request</h4>
-
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/laboratory-tests</code></p>
-
-<h3 id="create-a-laboratory-test">Create a laboratory test</h3>
+<h2 id="create-an-encounter">Create an encounter</h2>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/laboratory-tests"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">performer</span><span class="o">=</span><span class="s1">'{ "object": "MedicalPractitioner", "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf" }'</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/encounters"</span> <span class="se">\</span>
+  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
+  -d <span class="nb">type</span><span class="o">=</span><span class="s2">"Examination"</span> <span class="se">\</span>
+  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+</span></code></pre>
 
 <blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LaboratoryTest"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b08c2faf-8cde-4075-b25f-aed2ebe0f657"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b034557d-5dbe-4812-ab13-4678c1ef8daf"</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"medicationStatements"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/laboratory-tests</code></p>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/encounters</code></p>
 
-<p>Create a new laboratory test object.</p>
+<p>Create a new encounter object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -2848,39 +1485,72 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>effectiveDate</td>
+<td>date <sub>required</sub></td>
 <td>String</td>
-<td>The date of the observation</td>
+<td>The date of the encounter</td>
 </tr>
 <tr>
-<td>performer</td>
-<td><a href="#medical-practitioners">MedicalPractitioner</a></td>
-<td>The medical practitioner who performed the diagnostics</td>
+<td>patient <sub>required</sub></td>
+<td><a href="#patients">Patient</a></td>
+<td>The patient</td>
 </tr>
 <tr>
-<td>result</td>
-<td>Array of <a href="#observations">Observation</a></td>
-<td>The lab test panels for the laboratory test</td>
+<td>doctorList</td>
+<td>Array of Objects</td>
+<td>The list of doctors involved in the encounter. Each object has attributes <code class="prettyprint">doctor</code> and <code class="prettyprint">role</code>, where <code class="prettyprint">doctor</code> is a reference object to <a href="#medical-practitioners">MedicalPractitioner</a> and <code class="prettyprint">role</code> is a string with possible values <ul><li><code class="prettyprint">performer</code></li><li><code class="prettyprint">referrer</code></li><li><code class="prettyprint">consultant</code></li><li><code class="prettyprint">requester</code></li></td>
 </tr>
 <tr>
-<td>conclusion</td>
-<td>String</td>
-<td>The conclusion or narrative of the laboratory test</td>
-</tr>
-<tr>
-<td>presentedForm</td>
-<td><a href="#data-sources">DataSource</a></td>
-<td>The data source of the laboratory test</td>
+<td>location</td>
+<td><a href="#medical-facilities">MedicalFacility</a></td>
+<td>The location of the encounter</td>
 </tr>
 </tbody></table>
 
-<h3 id="update-laboratory-test">Update laboratory test</h3>
+<p><br/></p>
+
+<p>Parameters exclusive to <strong>RadiologyStudy</strong> type</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dicom</td>
+<td>Array of objects</td>
+<td>The list of objects representing dicom images. Each object has attributes <code class="prettyprint">studyUid</code> and <code class="prettyprint">viewerUrl</code>.</td>
+</tr>
+</tbody></table>
+
+<p><br/></p>
+
+<p>Parameters exclusive to <strong>LaboratoryTest</strong> type</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conclusion</td>
+<td>String</td>
+<td>The summary of the encounter of <em>LaboratoryTest</em> type</td>
+</tr>
+</tbody></table>
+
+<p>Note: The attributes representing <a href="#encounter-items">encounter items</a> such as <code class="prettyprint">notes</code>, <code class="prettyprint">medicationStatements</code>, <code class="prettyprint">conditions</code> and <code class="prettyprint">result</code> are read-only in encounter objects and needs to be referenced from the encounter items to add to the parent encounter.</p>
+
+<h2 id="update-an-encounter">Update an encounter</h2>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/laboratory-tests/b08c2faf-8cde-4075-b25f-aed2ebe0f657"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
+  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
@@ -2889,24 +1559,25 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LaboratoryTest"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b08c2faf-8cde-4075-b25f-aed2ebe0f657"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"performer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicalPractitioner"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b034557d-5dbe-4812-ab13-4678c1ef8daf"</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Examination"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"patient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"presentedForm"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nt">"doctorList"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">POST https://api.picnichealth.com/v1/laboratory-tests/:id</code></p>
+<p><code class="prettyprint">POST https://api.picnichealth.com/v1/encounters/:id</code></p>
 
-<p>Update an existing laboratory test object.</p>
+<p>Update an existing encounter object.</p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -2918,38 +1589,71 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>effectiveDate</td>
+<td>date <sub>required</sub></td>
 <td>String</td>
-<td>The date of the laboratory test</td>
+<td>The date of the encounter</td>
 </tr>
 <tr>
-<td>performer</td>
-<td><a href="#medical-practitioners">MedicalPractitioner</a></td>
-<td>The medical practitioner who performed the diagnostics</td>
+<td>patient <sub>required</sub></td>
+<td><a href="#patients">Patient</a></td>
+<td>The patient</td>
 </tr>
 <tr>
-<td>result</td>
-<td>Array of <a href="#observations">Observation</a></td>
-<td>The lab test panels for the laboratory test</td>
+<td>doctorList</td>
+<td>Array of Objects</td>
+<td>The list of doctors involved in the encounter. Each object has attributes <code class="prettyprint">doctor</code> and <code class="prettyprint">role</code>, where <code class="prettyprint">doctor</code> is a reference object to <a href="#medical-practitioners">MedicalPractitioner</a> and <code class="prettyprint">role</code> is a string with possible values <ul><li><code class="prettyprint">performer</code></li><li><code class="prettyprint">referrer</code></li><li><code class="prettyprint">consultant</code></li><li><code class="prettyprint">requester</code></li></td>
 </tr>
 <tr>
-<td>conclusion</td>
-<td>String</td>
-<td>The conclusion or narrative of the laboratory test</td>
-</tr>
-<tr>
-<td>presentedForm</td>
-<td><a href="#data-sources">DataSource</a></td>
-<td>The data source of the laboratory test</td>
+<td>location</td>
+<td><a href="#medical-facilities">MedicalFacility</a></td>
+<td>The location of the encounter</td>
 </tr>
 </tbody></table>
 
-<h3 id="delete-laboratory-test">Delete laboratory test</h3>
+<p><br/></p>
+
+<p>Parameters exclusive to <strong>RadiologyStudy</strong> type</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dicom</td>
+<td>Array of objects</td>
+<td>The list of objects representing dicom images. Each object has attributes <code class="prettyprint">studyUid</code> and <code class="prettyprint">viewerUrl</code>.</td>
+</tr>
+</tbody></table>
+
+<p><br/></p>
+
+<p>Parameters exclusive to <strong>LaboratoryTest</strong> type</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conclusion</td>
+<td>String</td>
+<td>The summary of the laboratory test</td>
+</tr>
+</tbody></table>
+
+<p>Note: The attributes representing <a href="#encounter-items">encounter items</a> such as <code class="prettyprint">notes</code>, <code class="prettyprint">medicationStatements</code>, <code class="prettyprint">conditions</code> and <code class="prettyprint">result</code> are read-only in encounter objects and needs to be referenced from the encounter items to add to the parent encounter.</p>
+
+<h2 id="delete-an-encounter">Delete an encounter</h2>
 
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/laboratory-tests/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY
 </span></code></pre>
 
@@ -2957,30 +1661,30 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"516fe3e3-386b-4c3a-8744-20f2211254b4"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Permanently delete a laboratory test</p>
+<p>Permanently delete an encounter.</p>
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/laboratory-tests/:id</code></p>
+<p><code class="prettyprint">DELETE https//api.picnichealth.com/v1/encounters/:id</code></p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>DataType</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
-<td>The ID of the laboratory test to delete</td>
+<td>The ID of the encounters to delete</td>
 </tr>
 </tbody></table>
 
@@ -3256,7 +1960,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8ddb870-c65c-4b31-ba42-8f7b55f37e96"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
@@ -3313,7 +2017,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8ddb870-c65c-4b31-ba42-8f7b55f37e96"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
@@ -3342,7 +2046,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/medication-statements"</span> <span class="se">\</span>
   -d <span class="nv">encounter</span><span class="o">=</span><span class="s1">'{ "object": "Examination", "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96" }'</span> <span class="se">\</span>
   -d <span class="nv">status</span><span class="o">=</span><span class="s2">"active"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
+  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
   -d <span class="nv">medicationCoding</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId:": "eb8992d8-3117-47b3-a660-b9156b2b35bc" }'</span> <span class="se">\</span>
   -d <span class="nv">instruction</span><span class="o">=</span><span class="s2">"18 units every morning, 12 units every evening"</span> <span class="se">\</span>
   -u YOUR_API_KEY: <span class="se">\</span>
@@ -3360,7 +2064,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8ddb870-c65c-4b31-ba42-8f7b55f37e96"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
@@ -3396,7 +2100,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <td>The status of the medication. It must be <code class="prettyprint">active</code> or <code class="prettyprint">discontinued</code></td>
 </tr>
 <tr>
-<td>effectiveDate</td>
+<td>date</td>
 <td>String</td>
 <td>The date of the medication recorded</td>
 </tr>
@@ -3438,7 +2142,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8ddb870-c65c-4b31-ba42-8f7b55f37e96"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-16"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"medicationCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="w">
@@ -3474,7 +2178,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <td>The status of the medication. It must be <code class="prettyprint">active</code> or <code class="prettyprint">discontinued</code></td>
 </tr>
 <tr>
-<td>effectiveDate</td>
+<td>date</td>
 <td>String</td>
 <td>The date of the medication recorded</td>
 </tr>
@@ -3561,7 +2265,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC METABOLIC PANEL"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
@@ -3650,7 +2354,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC METABOLIC PANEL"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
@@ -3710,7 +2414,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/observations"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
+  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
   -d <span class="nv">name</span><span class="o">=</span><span class="s2">"CBC with Differential Panel"</span>
   -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" }
   -H "Authorization: YOUR_API_KEY" \
@@ -3723,7 +2427,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-17"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC METABOLIC PANEL"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"encounter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3750,7 +2454,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>effectiveDate</td>
+<td>date</td>
 <td>String</td>
 <td>The date of the observation</td>
 </tr>
@@ -3777,7 +2481,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
-  -d <span class="nv">effectiveDate</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
+  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
   -d <span class="nv">component</span><span class="o">=</span><span class="s1">'[ { object: "LabTestResult", referenceId: "14f360b1-c5ae-40b2-967f-5670315295e0" } ]'</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -3789,7 +2493,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a0b758-47ca-414b-9f9e-400bb2539b81"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"effectiveDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-19"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BASIC METABOLIC PANEL"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"encounter"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3821,7 +2525,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>effectiveDate</td>
+<td>date</td>
 <td>String</td>
 <td>The date of the observation</td>
 </tr>
@@ -4128,15 +2832,6 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </ul>
 
 <p>There are some cases where a codeable encounter or encounter items cannot be associated with any code in the above standard code systems. For those cases, we use a PicnicHealth built-in code system <code class="prettyprint">Buffet</code> as an extension of the associated code. This <code class="prettyprint">Buffet</code> code is a temporary code and is replaced by the standard code as an equivalent code is added to the standard code system. This allows any codes to be easily managable and reuseable.</p>
-
-          <h1 id="data-sources">Data Sources</h1>
-
-<p>PicnicHealth supports the following data source types:</p>
-
-<ul>
-<li>Pdf</li>
-<li>Xml</li>
-</ul>
 
           <h1 id="errors">Errors</h1>
 
