@@ -26,6 +26,10 @@ curl "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb
     "object": "Code",
     "referenceId": "288EBF7A-9F6F-4E14-8AAD-7E1490C5FA80"
   },
+  "encounter": {
+    "object": "DiagnosticReport",
+    "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96"
+  },
   "component": [
     {
       "object": "LabTestResult",
@@ -83,55 +87,64 @@ curl "https://api.picnichealth.com/v1/observations" \
 > Example response:
 
 ```json
-[
-  {
-    "object": "Observation",
-    "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-    "effectiveDate": "2015-10-17",
-    "name": "BASIC METABOLIC PANEL",
-    "coding": {
-      "object": "Code",
-      "referenceId": "288EBF7A-9F6F-4E14-8AAD-7E1490C5FA80"
+{
+  "object": "List",
+  "length": 20,
+  "hasMore": true,
+  "data": [
+    {
+      "object": "Observation",
+      "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
+      "effectiveDate": "2015-10-17",
+      "name": "BASIC METABOLIC PANEL",
+      "coding": {
+        "object": "Code",
+        "referenceId": "288EBF7A-9F6F-4E14-8AAD-7E1490C5FA80"
+      },
+      "encounter": {
+        "object": "DiagnosticReport",
+        "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96"
+      },
+      "component": [
+        {
+          "object": "LabTestResult",
+          "referenceId": "2532abb0-e5d8-4f19-9396-57db85a32a4c"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "db621bec-d1ea-42ee-9001-c0b03fde7444"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "4afedf9f-894c-4f0c-8af9-60051485731b"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "24b2049a-fd3c-48e4-b0b4-6fc37435b0a8"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "83c33e9d-d080-4d95-a932-b85594dfd08d"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "7e691e49-12a4-4a9b-abca-4cc16f00657a"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "7d15c42d-1e8d-480f-83ed-2757522ad4b1"
+        },
+        {
+          "object": "LabTestResult",
+          "referenceId": "ceca3d0c-1448-4a42-b4b3-c03f0f5e49c3"
+        }
+      ]
     },
-    "component": [
-      {
-        "object": "LabTestResult",
-        "referenceId": "2532abb0-e5d8-4f19-9396-57db85a32a4c"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "db621bec-d1ea-42ee-9001-c0b03fde7444"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "4afedf9f-894c-4f0c-8af9-60051485731b"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "24b2049a-fd3c-48e4-b0b4-6fc37435b0a8"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "83c33e9d-d080-4d95-a932-b85594dfd08d"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "7e691e49-12a4-4a9b-abca-4cc16f00657a"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "7d15c42d-1e8d-480f-83ed-2757522ad4b1"
-      },
-      {
-        "object": "LabTestResult",
-        "referenceId": "ceca3d0c-1448-4a42-b4b3-c03f0f5e49c3"
-      }
-    ]
-  },
-  {
-    "...": "..."
-  }
-]
+    {
+      "...": "..."
+    }
+  ]
+}
 ```
 
 Return a list of observation objects
@@ -156,6 +169,7 @@ curl -X POST "https://api.picnichealth.com/v1/observations" \
   "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
   "effectiveDate": "2015-10-17",
   "name": "BASIC METABOLIC PANEL",
+  "encounter": null,
   "coding": {
     "object": "Code",
     "referenceId": "288EBF7A-9F6F-4E14-8AAD-7E1490C5FA80"
@@ -196,6 +210,7 @@ curl -X POST "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f
   "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
   "effectiveDate": "2015-10-19",
   "name": "BASIC METABOLIC PANEL",
+  "encounter": null,
   "coding": {
     "object": "Code",
     "referenceId": "288EBF7A-9F6F-4E14-8AAD-7E1490C5FA80"

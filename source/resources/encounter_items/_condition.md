@@ -47,23 +47,28 @@ curl "https://api.picnichealth.com/v1/conditions" \
 > Example response:
 
 ```json
-[
-  {
-    "object": "Condition",
-    "id": "50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e",
-    "encounter": {
-      "object": "Examination",
-      "referenceId": "72314206-32df-4777-9a26-73b37bae9a5a"
+{
+  "object": "List",
+  "length": 20,
+  "hasMore": true,
+  "data": [
+    {
+      "object": "Condition",
+      "id": "50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e",
+      "encounter": {
+        "object": "Examination",
+        "referenceId": "72314206-32df-4777-9a26-73b37bae9a5a"
+      },
+      "coding": {
+        "object": "Code",
+        "referenceId": "f60d40f2-dc3a-49f1-a7e2-a599c2be36dc"
+      }
     },
-    "coding": {
-      "object": "Code",
-      "referenceId": "f60d40f2-dc3a-49f1-a7e2-a599c2be36dc"
+    {
+      "...": "..."
     }
-  },
-  {
-    "...": "..."
-  }
-]
+  ]
+}
 ```
 
 Return a list of condition objects

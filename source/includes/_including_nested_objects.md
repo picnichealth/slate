@@ -4,7 +4,7 @@
 
 ```shell
 curl "https://api.picnichealth.com/v1/diagnostic-reports/a15ad9e5-d96b-4ebf-9781-bccc3707932d?include=performer,result.components" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY
 ```
 
 By default, the nested objects returned from the API are referenced in the following form:

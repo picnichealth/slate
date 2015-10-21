@@ -6,7 +6,7 @@ This is an object representing a lab test result.
 
 ```shell
 curl "https://api.picnichealth.com/v1/lab-test-results/c8d5df8c-67ad-491e-958a-ffdd8913ff6e" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -53,7 +53,7 @@ id | String | The ID of the lab test result to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/lab-test-results" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -107,7 +107,7 @@ curl -X POST "https://api.picnichealth.com/v1/lab-test-results" \
   -d referenceRangePositiveOrNegativeValue="positive" \
   -d important=1 \
   -d coding='{ "object": "Code", "referenceId": "98f391e1-eff0-4f1e-98c5-0ddab280b42a" }',
-  -H "Authorization: YOUR_API_KEY" \
+  -u YOUR_API_KEY: \
   -H "Content-Type: application/json"
 ```
 
@@ -174,7 +174,7 @@ coding | [Code](#codes) | The code for the lab test result. This is usually refe
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/lab-test-results/133651e7-2ada-45bd-91ab-d91fde4612fa" \
   -d positiveOrNegativeValue="negative"
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -239,7 +239,7 @@ coding | [Code](#codes) | The code for the lab test result. This is usually refe
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/lab-test-results/133651e7-2ada-45bd-91ab-d91fde4612fa" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

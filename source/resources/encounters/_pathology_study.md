@@ -6,7 +6,7 @@ This is an object representing an pathology study.
 
 ```shell
 curl "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -16,18 +16,26 @@ curl "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-
   "object": "PathologyStudy",
   "id": "79689692-b639-4c56-b57e-1528d2550b5e",
   "effectiveDate": "2015-10-17",
-  "subject": {
+  "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
   },
-  "performer": {
-    "object": "MedicalPractitioner",
-    "referenceId": "532b9e57-18ba-4024-8440-1abe5ba17c39"
-  },
-  "referrer": {
-    "object": "MedicalPractitoner",
-    "referenceId": "0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"
-  },
+  "doctorList": [
+    {
+      "role": "performer",
+      "doctor": {
+        "object": "MedicalPractitioner",
+        "referenceId": "532b9e57-18ba-4024-8440-1abe5ba17c39"
+      }
+    },
+    {
+      "role": "referrer",
+      "doctor": {
+        "object": "MedicalPractitoner",
+        "referenceId": "0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"
+      }
+    }
+  ],
   "location": {
     "object": "MedicalFacility",
     "referenceId": "00993db8-fc4e-4276-9e41-dbeb3e72fbfd"
@@ -59,46 +67,57 @@ id | String | The ID of the pathology study to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/pathology-studies" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
 
 ```json
-[
-  {
-    "object": "PathologyStudy",
-    "id": "79689692-b639-4c56-b57e-1528d2550b5e",
-    "effectiveDate": "2015-10-17",
-    "subject": {
-      "object": "Patient",
-        "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
+{
+  "object": "List",
+  "length": 20,
+  "hasMore": true,
+  "data": [
+    {
+      "object": "PathologyStudy",
+      "id": "79689692-b639-4c56-b57e-1528d2550b5e",
+      "effectiveDate": "2015-10-17",
+      "patient": {
+        "object": "Patient",
+          "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
+      },
+     "doctorList": [
+       {
+         "role": "performer",
+         "doctor": {
+           "object": "MedicalPractitioner",
+           "referenceId": "532b9e57-18ba-4024-8440-1abe5ba17c39"
+         }
+       },
+       {
+         "role": "referrer",
+         "doctor": {
+           "object": "MedicalPractitoner",
+           "referenceId": "0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"
+         }
+       }
+     ],
+      "location": {
+        "object": "MedicalFacility",
+        "referenceId": "00993db8-fc4e-4276-9e41-dbeb3e72fbfd"
+      },
+      "notes": [
+        {
+          "object": "TextSection",
+          "referenceId": "df6f12d9-be67-4644-8a73-6ac9843684df"
+        }
+      ]
     },
-    "performer": {
-      "object": "MedicalPractitioner",
-      "referenceId": "532b9e57-18ba-4024-8440-1abe5ba17c39"
-    },
-    "referrer": {
-      "object": "MedicalPractitoner",
-      "referenceId": "0aeb1158-66d6-4e46-9ef6-e614bb6cc34a"
-    },
-    "location": {
-      "object": "MedicalFacility",
-      "referenceId": "00993db8-fc4e-4276-9e41-dbeb3e72fbfd"
-    },
-    "title": "Pathology",
-    "subtitle": "GI Biopsy",
-    "notes": [
-      {
-        "object": "TextSection",
-        "referenceId": "df6f12d9-be67-4644-8a73-6ac9843684df"
-      }
-    ]
-  },
-  {
-    "...": "..."
-  }
-]
+    {
+      "...": "..."
+    }
+  ]
+}
 ```
 
 Return a list of pathology studies
@@ -109,9 +128,8 @@ Return a list of pathology studies
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/pathology-studies" \
   -d effectiveDate="2015-10-17" \
-  -d subject='{ object: "Patient", referenceId: "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca" }' \
-  -d title="Pathology" \
-  -H "Authorization: YOUR_API_KEY" \
+  -d patient='{ object: "Patient", referenceId: "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca" }' \
+  -u YOUR_API_KEY: \
   -H "Content-Type: application/json"
 ```
 
@@ -122,15 +140,12 @@ curl -X POST "https://api.picnichealth.com/v1/pathology-studies" \
   "object": "PathologyStudy",
   "id": "79689692-b639-4c56-b57e-1528d2550b5e",
   "effectiveDate": "2015-10-17",
-  "subject": {
+  "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
   },
-  "performer": null,
-  "referrer": null,
+  "doctorList": null,
   "location": null,
-  "title": "Pathology",
-  "subtitle": null,
   "notes": null
 }
 ```
@@ -144,12 +159,9 @@ Create a new pathology study object.
 Parameter | Data Type | Description
 --------- | --------- | -----------
 effectiveDate | String | The date of the pathology study
-subject | [Patient](#patients) | The subject of the pathology study
-performer | [MedicalPractioner](#medical-practitioners) | THe performing doctor
-referrer | [MedicalPractitioner](#medical-practitioners) | The referring doctor
+patient | [Patient](#patients) | The patient of the pathology study
+doctorList | Array of Objects | The list of doctors involved
 location | [MedicalFacility](#medical-facilities) | The location of the pathology study
-title | String | The title of the pathology study
-subtitle | String | The subtitle of the pathology study
 notes | Array of [TextSection](#text-sections) | The notes for the pathology study
 
 
@@ -159,7 +171,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the pathology stu
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e" \
   -d effectiveDate="2015-10-19" \
-  -H "Authorization: YOUR_API_KEY" \
+  -u YOUR_API_KEY: \
   -H "Content-Type: application/json"
 ```
 
@@ -170,15 +182,12 @@ curl -X POST "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c
   "object": "PathologyStudy",
   "id": "79689692-b639-4c56-b57e-1528d2550b5e",
   "effectiveDate": "2015-10-19",
-  "subject": {
+  "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
   },
-  "performer": null,
-  "referrer": null,
+  "doctorList": null,
   "location": null,
-  "title": "Pathology",
-  "subtitle": null,
   "notes": null
 }
 ```
@@ -192,12 +201,9 @@ Update an existing pathology study object.
 Parameter | Data Type | Description
 --------- | --------- | -----------
 effectiveDate | String | The date of the pathology study
-subject | [Patient](#patients) | The subject of the pathology study
-performer | [MedicalPractioner](#medical-practitioners) | THe performing doctor
-referrer | [MedicalPractitioner](#medical-practitioners) | The referring doctor
+patient | [Patient](#patients) | The patient of the pathology study
+doctorList | Array of Objects | The list of doctors involved
 location | [MedicalFacility](#medical-facilities) | The location of the pathology study
-title | String | The title of the pathology study
-subtitle | String | The subtitle of the pathology study
 notes | Array of [TextSection](#text-sections) | The notes for the pathology study
 
 ### Delete an pathology study

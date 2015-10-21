@@ -5,7 +5,7 @@
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "https://api.picnichealth.com/v1/END_POINT" \
-  -H "api_key: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 PicnicHealth uses API keys to allow access to the API. Please <a target="_blank" href="https://picnichealth.com/contact">contact us</a> for the API key.
