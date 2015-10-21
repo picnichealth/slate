@@ -15,8 +15,11 @@ curl "https://api.picnichealth.com/v1/lab-test-results/c8d5df8c-67ad-491e-958a-f
 {
   "object": "LabTestResult",
   "id": "c8d5df8c-67ad-491e-958a-ffdd8913ff6e",
-  "effectiveDate": "2015-10-17",
   "name": "Neutrophils (%)",
+  "observation": {
+    "object": "Observation",
+    "referenceId": "fcc0a4c8-5910-4031-889d-d06623d05030"
+  },
   "textValue": null,
   "positiveOrNegativeValue": null,
   "numberValue": 52.2,
@@ -63,8 +66,11 @@ curl "https://api.picnichealth.com/v1/lab-test-results" \
   {
     "object": "LabTestResult",
     "id": "c8d5df8c-67ad-491e-958a-ffdd8913ff6e",
-    "effectiveDate": "2015-10-17",
     "name": "Neutrophils (%)",
+    "observation": {
+      "object": "Observation",
+      "referenceId": "fcc0a4c8-5910-4031-889d-d06623d05030"
+    },
     "textValue": null,
     "positiveOrNegativeValue": null,
     "numberValue": 52.2,
@@ -102,6 +108,7 @@ Return a list of lab test result objects
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/lab-test-results" \
   -d name="C-Reactive Protein" \
+  -d observation='{ "object": "Observation", "referenceId": "fcc0a4c8-5910-4031-889d-d06623d05030" }
   -d positiveOrNegativeValue="positive" \
   -d referenceRangeType="positiveNegative"
   -d referenceRangePositiveOrNegativeValue="positive" \
@@ -117,8 +124,11 @@ curl -X POST "https://api.picnichealth.com/v1/lab-test-results" \
 {
   "object": "LabTestResult",
   "id": "133651e7-2ada-45bd-91ab-d91fde4612fa",
-  "effectiveDate": "2015-10-18",
   "name": "C-Reactive Protein",
+  "observation": {
+    "object": "Observation",
+    "referenceId": "fcc0a4c8-5910-4031-889d-d06623d05030"
+  },
   "textValue": null,
   "positiveOrNegativeValue": "positive",
   "numberValue": null,
@@ -149,16 +159,16 @@ Create a new lab test result object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The collection date of the lab test result
 name | String | The name of the lab test result
+observation | [Observation](#observations) | The observation which the lab test result belongs to
 textValue | String | The text value of the lab test result
 positiveOrNegativeValue | String | The positive or negative value of the lab test result. The value must be `positve` or `negative`
 numberValue | Number | The numeric value of the lab test result
-valueRangeType | Number | The range type of the value. The value must be one of the following: `exact`, `greaterThan`, `lessThan`, `greaterThanOrEqualTo`, `lessThanOrEqualTo`, `between`, `text`, `positiveNegative`
+valueRangeType | Number | The range type of the value. The value must be one of the following: <ul><li>`exact`</li><li>`greaterThan`</li><li>`lessThan`</li><li>`greaterThanOrEqualTo`</li><li>`lessThanOrEqualTo`</li><li>`between`</li><li>`text`</li><li>`positiveNegative`</li></ul>
 valueRangeLowValue | Number | The lower bound value of the lab test result
 valueRangeHighValue | Number | The upper bound value of the lab test result
 valueRangeBorderValue | Number | The border value of the lab test result
-referenceRangeType | String | The range type of the reference range. The value must be one of the following: `exact`, `greaterThan`, `lessThan`, `greaterThanOrEqualTo`, `lessThanOrEqualTo`, `between`, `text`, `positiveNegative`
+referenceRangeType | String | The range type of the reference range. The value must be one of the following: <ul><li>`exact`</li><li>`greaterThan`</li><li>`lessThan`</li><li>`greaterThanOrEqualTo`</li><li>`lessThanOrEqualTo`</li><li>`between`</li><li>`text`</li><li>`positiveNegative`</li></ul>
 referenceRangeLowValue | Number | The lower bound value of the reference range
 referenceRangeHighValue | Number | The upper bound value of the reference range
 referenceRangeBorderValue | Number | The border value of the reference range
@@ -183,8 +193,11 @@ curl -X POST "https://api.picnichealth.com/v1/lab-test-results/133651e7-2ada-45b
 {
   "object": "LabTestResult",
   "id": "133651e7-2ada-45bd-91ab-d91fde4612fa",
-  "effectiveDate": "2015-10-18",
   "name": "C-Reactive Protein",
+  "observation": {
+    "object": "Observation",
+    "referenceId": "fcc0a4c8-5910-4031-889d-d06623d05030"
+  },
   "textValue": null,
   "positiveOrNegativeValue": "negative",
   "numberValue": null,
@@ -215,16 +228,16 @@ Update a lab test result
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The collection date of the lab test result
 name | String | The name of the lab test result
+observation | [Observation](#observations) | The observation which the lab test result belongs to
 textValue | String | The text value of the lab test result
 positiveOrNegativeValue | String | The positive or negative value of the lab test result. The value must be `positve` or `negative`
 numberValue | Number | The numeric value of the lab test result
-valueRangeType | Number | The range type of the value. The value must be one of the following: `exact`, `greaterThan`, `lessThan`, `greaterThanOrEqualTo`, `lessThanOrEqualTo`, `between`, `text`, `positiveNegative`
+valueRangeType | Number | The range type of the value. The value must be one of the following: <ul><li>`exact`</li><li>`greaterThan`</li><li>`lessThan`</li><li>`greaterThanOrEqualTo`</li><li>`lessThanOrEqualTo`</li><li>`between`</li><li>`text`</li><li>`positiveNegative`</li></ul>
 valueRangeLowValue | Number | The lower bound value of the lab test result
 valueRangeHighValue | Number | The upper bound value of the lab test result
 valueRangeBorderValue | Number | The border value of the lab test result
-referenceRangeType | String | The range type of the reference range. The value must be one of the following: `exact`, `greaterThan`, `lessThan`, `greaterThanOrEqualTo`, `lessThanOrEqualTo`, `between`, `text`, `positiveNegative`
+referenceRangeType | String | The range type of the reference range. The value must be one of the following: <ul><li>`exact`</li><li>`greaterThan`</li><li>`lessThan`</li><li>`greaterThanOrEqualTo`</li><li>`lessThanOrEqualTo`</li><li>`between`</li><li>`text`</li><li>`positiveNegative`</li></ul>
 referenceRangeLowValue | Number | The lower bound value of the reference range
 referenceRangeHighValue | Number | The upper bound value of the reference range
 referenceRangeBorderValue | Number | The border value of the reference range

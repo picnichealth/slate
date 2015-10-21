@@ -1,11 +1,11 @@
-## Consults
-This is an object representing an consult.
+## Hospitalizations
+This is an object representing a hospitalization.
 
-### Get a specific consult
+### Get a specific hospitalization
 > Example request:
 
 ```shell
-curl "https://api.picnichealth.com/v1/consults/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
+curl "https://api.picnichealth.com/v1/hospitalizations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
   -H "Authorization: YOUR_API_KEY"
 ```
 
@@ -13,9 +13,9 @@ curl "https://api.picnichealth.com/v1/consults/d3a0b758-47ca-414b-9f9e-400bb2539
 
 ```json
 {
-  "object": "Consult",
+  "object": "Hospitalization",
   "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -42,29 +42,29 @@ curl "https://api.picnichealth.com/v1/consults/d3a0b758-47ca-414b-9f9e-400bb2539
   },
   "notes": [
     {
-      "object": "TextSection",
+      "object": "Note",
       "referenceId": "8ca8f80d-951a-46af-bc70-8ccd6e0955b0"
     }
   ]
 }
 ```
 
-Return an consult
+Return an hospitalization
 
 #### HTTP Request
-`GET https://api.picnichealth.com/v1/consults/:id`
+`GET https://api.picnichealth.com/v1/hospitalizations/:id`
 
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-id | String | The ID of the consult to be retrieved.
+id | String | The ID of the hospitalization to be retrieved.
 
 
-### List consults
+### List hospitalizations
 > Example request:
 
 ```shell
-curl "https://api.picnichealth.com/v1/consults" \
+curl "https://api.picnichealth.com/v1/hospitalizations" \
   -H "Authorization: YOUR_API_KEY"
 ```
 
@@ -77,9 +77,9 @@ curl "https://api.picnichealth.com/v1/consults" \
   "hasMore": true,
   "data": [
     {
-      "object": "Consult",
+      "object": "Hospitalization",
       "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "patient": {
         "object": "Patient",
         "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -104,11 +104,9 @@ curl "https://api.picnichealth.com/v1/consults" \
         "object": "MedicalFacility",
         "referenceId": "00993db8-fc4e-4276-9e41-dbeb3e72fbfd"
       },
-      "title": "Consult Note",
-      "subtitle": null,
       "notes": [
         {
-          "object": "TextSection",
+          "object": "Note",
           "referenceId": "8ca8f80d-951a-46af-bc70-8ccd6e0955b0"
         }
       ]
@@ -120,16 +118,15 @@ curl "https://api.picnichealth.com/v1/consults" \
 }
 ```
 
-Return a list of consults
+Return a list of hospitalizations
 
-### Create a consult
+### Create a hospitalization
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/consults" \
-  -d effectiveDate="2015-10-17" \
+curl -X POST "https://api.picnichealth.com/v1/hospitalizations" \
+  -d date="2015-10-17" \
   -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -d title="Consult Note" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
 ```
@@ -138,44 +135,40 @@ curl -X POST "https://api.picnichealth.com/v1/consults" \
 
 ```json
 {
-  "object": "Consult",
+  "object": "Hospitalization",
   "id": "2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
   },
   "doctorList": null,
   "location": null,
-  "title": "Office Visit",
-  "subtitle": null,
   "notes": null
 }
 ```
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/consults`
+`POST https://api.picnichealth.com/v1/hospitalizations`
 
-Create a new consult object.
+Create a new hospitalization object.
 
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the consult
+date | String | The date of the hospitalization
 patient | [Patient](#patients) | The patient
 doctorList | Array of Objects | The list of doctors involved
-location | [MedicalFacility](#medical-facilities) | The location of the consult
-title | String | The title of the consult
-subtitle | String | The subtitle of the consult
-notes | Array of [TextSection](#text-sections) | The notes for the consult
+location | [MedicalFacility](#medical-facilities) | The location of the hospitalization
+notes | Array of [TextSection](#text-sections) | The notes for the hospitalization
 
 
-### Update a consult
+### Update a hospitalization
 > Example request:
 
 ```shell
-curl -X POST "https://api.picnichealth.com/v1/consults/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b" \
-  -d effectiveDate="2015-10-19" \
+curl -X POST "https://api.picnichealth.com/v1/hospitalizations/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b" \
+  -d date="2015-10-19" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
 ```
@@ -184,44 +177,40 @@ curl -X POST "https://api.picnichealth.com/v1/consults/2fdc49ac-bc0b-407d-a6f8-7
 
 ```json
 {
-  "object": "Consult",
+  "object": "Hospitalization",
   "id": "2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b",
-  "effectiveDate": "2015-10-19",
+  "date": "2015-10-19",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
   },
   "referrer": null,
-  "consultant": null,
+  "hospitalizationant": null,
   "location": null,
-  "title": "Office Visit",
-  "subtitle": null,
   "notes": null
 }
 ```
 
 #### HTTP Request
-`POST https://api.picnichealth.com/v1/consults/:id`
+`POST https://api.picnichealth.com/v1/hospitalizations/:id`
 
-Update an existing consult object.
+Update an existing hospitalization object.
 
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the consult
+date | String | The date of the hospitalization
 patient | [Patient](#patients) | The patient
 doctorList | Array of Objects | The list of doctors involved
-location | [MedicalFacility](#medical-facilities) | The location of the consult
-title | String | The title of the consult
-subtitle | String | The subtitle of the consult
-notes | Array of [TextSection](#text-sections) | The notes for the consult
+location | [MedicalFacility](#medical-facilities) | The location of the hospitalization
+notes | Array of [TextSection](#text-sections) | The notes for the hospitalization
 
 
-### Delete an consult
+### Delete an hospitalization
 > Example request:
 
 ```shell
-curl -X DELETE "https://api.picnichealth.com/v1/consults/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b" \
+curl -X DELETE "https://api.picnichealth.com/v1/hospitalizations/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b" \
   -H "Authorization: YOUR_API_KEY
 ```
 
@@ -234,12 +223,12 @@ curl -X DELETE "https://api.picnichealth.com/v1/consults/2fdc49ac-bc0b-407d-a6f8
 }
 ```
 
-Permanently delete an consult.
+Permanently delete an hospitalization.
 
 #### HTTP Request
-`DELETE https//api.picnichealth.com/v1/consults/:id`
+`DELETE https//api.picnichealth.com/v1/hospitalizations/:id`
 
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-id | String | The ID of the consult to delete
+id | String | The ID of the hospitalization to delete

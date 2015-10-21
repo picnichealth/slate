@@ -14,9 +14,9 @@ curl "https://api.picnichealth.com/v1/imaging-studies/d3a0b758-47ca-414b-9f9e-40
 
 ```json
 {
-  "object": "Observation",
+  "object": "ImagingStudy",
   "id": "ad37701d-7228-4904-9945-7c537b2c7848",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "fa316bf8-6d58-4971-8de2-5d003c582540"
@@ -76,9 +76,9 @@ curl "https://api.picnichealth.com/v1/imaging-studies" \
   "hasMore": true,
   "data": [
     {
-      "object": "Observation",
+      "object": "ImagingStudy",
       "id": "ad37701d-7228-4904-9945-7c537b2c7848",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "patient": {
         "object": "Patient",
         "referenceId": "fa316bf8-6d58-4971-8de2-5d003c582540"
@@ -124,7 +124,7 @@ Return a list of imaging study objects
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/imaging-studies" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
   -d dicom='[{ "viewerUrl": "https://www.medxt.com/docs/pathology_test" }]' \
   -u YOUR_API_KEY: \
@@ -137,7 +137,7 @@ curl -X POST "https://api.picnichealth.com/v1/imaging-studies" \
 {
   "object": "ImagingStudy",
   "id": "1871ebca-d7f2-47e3-bbaf-72e87e022cdb",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
@@ -162,7 +162,7 @@ Create a new imaging study object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the imaging study
+date | String | The date of the imaging study
 patient | [Patient](#patients) | The patient for whom the imaging study was made
 doctorList | Array of Objects | The list of doctors involved
 medicalFaciltiy | [MedicalFacility](#medical-facilities) | The medical facility where the imaging study was made
@@ -174,7 +174,7 @@ dicom | Array of Objects | The array of objects for dicom
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47e3-bbaf-72e87e022cdb" \
-  -d effectiveDate="2015-10-19" \
+  -d date="2015-10-19" \
   -u YOUR_API_KEY: \
   -H "Content-Type: application/json"
 ```
@@ -185,7 +185,7 @@ curl -X POST "https://api.picnichealth.com/v1/imaging-studies/1871ebca-d7f2-47e3
 {
   "object": "ImagingStudy",
   "id": "1871ebca-d7f2-47e3-bbaf-72e87e022cdb",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
@@ -210,7 +210,7 @@ Update an existing imaging study object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the imaging study
+date | String | The date of the imaging study
 patient | [Patient](#patients) | The patient for whom the imaging study was made
 doctorList | Array of Objects | The list of doctors involved
 medicalFaciltiy | [MedicalFacility](#medical-facilities) | The medical facility where the imaging study was made

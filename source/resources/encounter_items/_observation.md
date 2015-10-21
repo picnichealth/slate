@@ -20,7 +20,7 @@ curl "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb
 {
   "object": "Observation",
   "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "name": "BASIC METABOLIC PANEL",
   "coding": {
     "object": "Code",
@@ -95,7 +95,7 @@ curl "https://api.picnichealth.com/v1/observations" \
     {
       "object": "Observation",
       "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "name": "BASIC METABOLIC PANEL",
       "coding": {
         "object": "Code",
@@ -154,7 +154,7 @@ Return a list of observation objects
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/observations" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d name="CBC with Differential Panel"
   -d coding='{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" }
   -H "Authorization: YOUR_API_KEY" \
@@ -167,7 +167,7 @@ curl -X POST "https://api.picnichealth.com/v1/observations" \
 {
   "object": "Observation",
   "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "name": "BASIC METABOLIC PANEL",
   "encounter": null,
   "coding": {
@@ -186,7 +186,7 @@ Create a new observation object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the observation
+date | String | The date of the observation
 name | String | The name of the observation. Usually it is the name of the lab test panel.
 coding | [Code](#codes) | The code representing the observation
 component | Array of [LabTestResult](#lab-test-results) | The component lab test resuts of the observation
@@ -196,7 +196,7 @@ component | Array of [LabTestResult](#lab-test-results) | The component lab test
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
-  -d effectiveDate="2015-10-19" \
+  -d date="2015-10-19" \
   -d component='[ { object: "LabTestResult", referenceId: "14f360b1-c5ae-40b2-967f-5670315295e0" } ]' \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
@@ -208,7 +208,7 @@ curl -X POST "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f
 {
   "object": "Observation",
   "id": "d3a0b758-47ca-414b-9f9e-400bb2539b81",
-  "effectiveDate": "2015-10-19",
+  "date": "2015-10-19",
   "name": "BASIC METABOLIC PANEL",
   "encounter": null,
   "coding": {
@@ -232,7 +232,7 @@ Update an existing observation object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the observation
+date | String | The date of the observation
 name | String | The name of the observation. Usually it is the name of the lab test panel.
 coding | [Code](#codes) | The code representing the observation
 

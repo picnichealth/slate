@@ -39,7 +39,7 @@ Return a patient object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-id | The ID of the patient to be retrieved.
+id | String | The ID of the patient to be retrieved.
 
 
 ### List patients

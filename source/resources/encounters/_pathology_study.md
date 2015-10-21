@@ -15,7 +15,7 @@ curl "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-
 {
   "object": "PathologyStudy",
   "id": "79689692-b639-4c56-b57e-1528d2550b5e",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -81,7 +81,7 @@ curl "https://api.picnichealth.com/v1/pathology-studies" \
     {
       "object": "PathologyStudy",
       "id": "79689692-b639-4c56-b57e-1528d2550b5e",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "patient": {
         "object": "Patient",
           "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -127,7 +127,7 @@ Return a list of pathology studies
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/pathology-studies" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d patient='{ object: "Patient", referenceId: "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca" }' \
   -u YOUR_API_KEY: \
   -H "Content-Type: application/json"
@@ -139,7 +139,7 @@ curl -X POST "https://api.picnichealth.com/v1/pathology-studies" \
 {
   "object": "PathologyStudy",
   "id": "79689692-b639-4c56-b57e-1528d2550b5e",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -158,7 +158,7 @@ Create a new pathology study object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the pathology study
+date | String | The date of the pathology study
 patient | [Patient](#patients) | The patient of the pathology study
 doctorList | Array of Objects | The list of doctors involved
 location | [MedicalFacility](#medical-facilities) | The location of the pathology study
@@ -170,7 +170,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the pathology stu
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e" \
-  -d effectiveDate="2015-10-19" \
+  -d date="2015-10-19" \
   -u YOUR_API_KEY: \
   -H "Content-Type: application/json"
 ```
@@ -181,7 +181,7 @@ curl -X POST "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c
 {
   "object": "PathologyStudy",
   "id": "79689692-b639-4c56-b57e-1528d2550b5e",
-  "effectiveDate": "2015-10-19",
+  "date": "2015-10-19",
   "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -200,7 +200,7 @@ Update an existing pathology study object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the pathology study
+date | String | The date of the pathology study
 patient | [Patient](#patients) | The patient of the pathology study
 doctorList | Array of Objects | The list of doctors involved
 location | [MedicalFacility](#medical-facilities) | The location of the pathology study

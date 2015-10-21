@@ -20,7 +20,7 @@ curl "https://api.picnichealth.com/v1/medication-statements/50f372c6-1aeb-4b21-9
     "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96"
   },
   "status": "active",
-  "effectiveDate": "2015-10-16",
+  "date": "2015-10-16",
   "medicationCoding": {
     "object": "Code",
     "referenceId": "5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"
@@ -64,7 +64,7 @@ curl "https://api.picnichealth.com/v1/medication-statements" \
         "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96"
       },
       "status": "active",
-      "effectiveDate": "2015-10-16",
+      "date": "2015-10-16",
       "medicationCoding": {
         "object": "Code",
         "referenceId": "5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"
@@ -91,7 +91,7 @@ Return a list of medication statement objects
 curl -X POST "https://api.picnichealth.com/v1/medication-statements" \
   -d encounter='{ "object": "Examination", "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96" }' \
   -d status="active" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d medicationCoding='{ "object": "Code", "referenceId:": "eb8992d8-3117-47b3-a660-b9156b2b35bc" }' \
   -d instruction="18 units every morning, 12 units every evening" \
   -u YOUR_API_KEY: \
@@ -109,7 +109,7 @@ curl -X POST "https://api.picnichealth.com/v1/medication-statements" \
     "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96"
   },
   "status": "active",
-  "effectiveDate": "2015-10-16",
+  "date": "2015-10-16",
   "medicationCoding": {
     "object": "Code",
     "referenceId": "5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"
@@ -129,7 +129,7 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 encounter | [Encounter](#encounters) | The encounter when the medication statement was recorded
 status | String | The status of the medication. It must be `active` or `discontinued`
-effectiveDate | String | The date of the medication recorded
+date | String | The date of the medication recorded
 medicationCoding | [Code](#codes) | The coding of the medcation
 instruction | String | The instruction for the medication
 note | String | The note for the medication statement
@@ -154,7 +154,7 @@ curl -X POST "https://api.picnichealth.com/v1/medication-statements/50f372c6-1ae
     "referenceId": "a8ddb870-c65c-4b31-ba42-8f7b55f37e96"
   },
   "status": "active",
-  "effectiveDate": "2015-10-16",
+  "date": "2015-10-16",
   "medicationCoding": {
     "object": "Code",
     "referenceId": "5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"
@@ -174,7 +174,7 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 encounter | [Encounter](#encounters) | The encounter when the medication statement was recorded
 status | String | The status of the medication. It must be `active` or `discontinued`
-effectiveDate | String | The date of the medication recorded
+date | String | The date of the medication recorded
 medicationCoding | [Code](#codes) | The coding of the medcation
 instruction | String | The instruction for the medication
 note | String | The note for the medication statement

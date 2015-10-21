@@ -15,7 +15,7 @@ curl "https://api.picnichealth.com/v1/genetic-screens/2c5f5800-6bda-4018-9c11-f4
 {
   "object": "GeneticScreen",
   "id": "2c5f5800-6bda-4018-9c11-f4275880495b",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -63,7 +63,7 @@ curl "https://api.picnichealth.com/v1/genetic-screens" \
     {
       "object": "GeneticScreen",
       "id": "2c5f5800-6bda-4018-9c11-f4275880495b",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "patient": {
         "object": "Patient",
         "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -92,7 +92,7 @@ Return a list of genetic screens
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/genetic-screens" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
@@ -104,7 +104,7 @@ curl -X POST "https://api.picnichealth.com/v1/genetic-screens" \
 {
   "object": "Genetic Screen",
   "id": "516fe3e3-386b-4c3a-8744-20f2211254b4",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
@@ -123,7 +123,7 @@ Create a new genetic screen object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the genetic screen
+date | String | The date of the genetic screen
 patient | [Patient](#patients) | The patient of the genetic screen
 location | [MedicalFacility](#medical-facilities) | The location of the genetic screen
 notes | Array of [TextSection](#text-sections) | The notes for the genetic screen
@@ -133,7 +133,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the genetic scree
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/genetic-screens/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -d effectiveDate="2015-10-19" \
+  -d date="2015-10-19" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
 ```
@@ -144,7 +144,7 @@ curl -X POST "https://api.picnichealth.com/v1/genetic-screens/516fe3e3-386b-4c3a
 {
   "object": "GeneticScreen",
   "id": "516fe3e3-386b-4c3a-8744-20f2211254b4",
-  "effectiveDate": "2015-10-19",
+  "date": "2015-10-19",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
@@ -163,7 +163,7 @@ Update an existing genetic screen object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the genetic screen
+date | String | The date of the genetic screen
 patient | [Patient](#patients) | The patient of the genetic screen
 location | [MedicalFacility](#medical-facilities) | The location of the genetic screen
 notes | Array of [TextSection](#text-sections) | The notes for the genetic screen

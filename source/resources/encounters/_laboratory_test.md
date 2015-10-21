@@ -15,7 +15,7 @@ curl "https://api.picnichealth.com/v1/laboratory-tests/a15ad9e5-d96b-4ebf-9781-b
 {
   "object": "LaboratoryTest",
   "id": "a15ad9e5-d96b-4ebf-9781-bccc3707932d",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "performer": {
     "object": "MedicalPractitioner",
     "referenceId": "ad5ea88e-a79a-4431-98ae-45b3ef254f8a"
@@ -75,7 +75,7 @@ curl "https://api.picnichealth.com/v1/laboratory-tests" \
     {
       "object": "LaboratoryTest",
       "id": "a15ad9e5-d96b-4ebf-9781-bccc3707932d",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "performer": {
         "object": "MedicalPractitioner",
         "referenceId": "ad5ea88e-a79a-4431-98ae-45b3ef254f8a"
@@ -120,7 +120,7 @@ Return a list of laboratory test objects
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/laboratory-tests" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d performer='{ "object": "MedicalPractitioner", "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf" }' \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
@@ -132,7 +132,7 @@ curl -X POST "https://api.picnichealth.com/v1/laboratory-tests" \
 {
   "object": "LaboratoryTest",
   "id": "b08c2faf-8cde-4075-b25f-aed2ebe0f657",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "performer": {
     "object": "MedicalPractitioner",
     "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf"
@@ -151,7 +151,7 @@ Create a new laboratory test object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the observation
+date | String | The date of the observation
 performer | [MedicalPractitioner](#medical-practitioners) | The medical practitioner who performed the diagnostics
 result | Array of [Observation](#observations) | The lab test panels for the laboratory test
 conclusion | String | The conclusion or narrative of the laboratory test
@@ -162,7 +162,7 @@ presentedForm | [DataSource](#data-sources) | The data source of the laboratory 
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/laboratory-tests/b08c2faf-8cde-4075-b25f-aed2ebe0f657" \
-  -d effectiveDate="2015-10-19" \
+  -d date="2015-10-19" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json"
 ```
@@ -173,7 +173,7 @@ curl -X POST "https://api.picnichealth.com/v1/laboratory-tests/b08c2faf-8cde-407
 {
   "object": "LaboratoryTest",
   "id": "b08c2faf-8cde-4075-b25f-aed2ebe0f657",
-  "effectiveDate": "2015-10-19",
+  "date": "2015-10-19",
   "performer": {
     "object": "MedicalPractitioner",
     "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf"
@@ -192,7 +192,7 @@ Update an existing laboratory test object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the laboratory test
+date | String | The date of the laboratory test
 performer | [MedicalPractitioner](#medical-practitioners) | The medical practitioner who performed the diagnostics
 result | Array of [Observation](#observations) | The lab test panels for the laboratory test
 conclusion | String | The conclusion or narrative of the laboratory test

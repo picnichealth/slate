@@ -6,7 +6,6 @@ includes:
   - pagination
   - including_nested_objects
   - resources
-  - data_sources
   - errors
 
 search: true

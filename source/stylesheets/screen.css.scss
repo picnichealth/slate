@@ -415,6 +415,10 @@ html, body {
     border-bottom: 2px solid $main-bg;
   }
 
+  sub {
+    color: grey;
+  }
+
   table {
     margin-bottom: 1em;
     overflow: auto;
@@ -432,6 +436,9 @@ html, body {
 
     td {
       padding: 10px;
+      ul {
+        padding-left: 15px;
+      }
     }
 
     tr:last-child {

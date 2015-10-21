@@ -15,7 +15,7 @@ curl "https://api.picnichealth.com/v1/procedures/1b26577b-04ea-4fc8-895a-1f466b7
 {
   "object": "Procedure",
   "id": "1b26577b-04ea-4fc8-895a-1f466b707e63",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -79,7 +79,7 @@ curl "https://api.picnichealth.com/v1/procedures" \
     {
       "object": "Procedure",
       "id": "1b26577b-04ea-4fc8-895a-1f466b707e63",
-      "effectiveDate": "2015-10-17",
+      "date": "2015-10-17",
       "patient": {
         "object": "Patient",
         "referenceId": "d0f2fe0b-2cf8-4bd6-99c3-fa9c0b3b98ca"
@@ -125,7 +125,7 @@ Return a list of procedures
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/procedures" \
-  -d effectiveDate="2015-10-17" \
+  -d date="2015-10-17" \
   -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
   -u YOUR_API_KEY \
   -H "Content-Type: application/json"
@@ -137,7 +137,7 @@ curl -X POST "https://api.picnichealth.com/v1/procedures" \
 {
   "object": "Procedure",
   "id": "2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b",
-  "effectiveDate": "2015-10-17",
+  "date": "2015-10-17",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
@@ -156,7 +156,7 @@ Create a new procedure object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the procedure
+date | String | The date of the procedure
 patient | [Patient](#patients) | The patient
 doctorList | Array of Objects | The list of doctors involved
 location | [MedicalFacility](#medical-facilities) | The location of the procedure
@@ -168,7 +168,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the procedure
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/procedures/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b" \
-  -d effectiveDate="2015-10-19" \
+  -d date="2015-10-19" \
   -u YOUR_API_KEY \
   -H "Content-Type: application/json"
 ```
@@ -179,7 +179,7 @@ curl -X POST "https://api.picnichealth.com/v1/procedures/2fdc49ac-bc0b-407d-a6f8
 {
   "object": "Procedure",
   "id": "2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b",
-  "effectiveDate": "2015-10-19",
+  "date": "2015-10-19",
   "patient": {
     "object": "Patient",
     "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d"
@@ -198,7 +198,7 @@ Update an existing procedure object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-effectiveDate | String | The date of the procedure
+date | String | The date of the procedure
 patient | [Patient](#patients) | The patient
 doctorList | Array of Objects | The list of doctors involved
 location | [MedicalFacility](#medical-facilities) | The location of the procedure
