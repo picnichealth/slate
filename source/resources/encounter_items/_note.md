@@ -105,7 +105,7 @@ Create a new note object.
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-encounter | String | The encounter with which the note is associated
+encounter | [Encounter](#encounters) | The encounter with which the note is associated
 title | String | The title of the note
 note | String | The content of the note
 
@@ -142,7 +142,7 @@ Update an existing note
 #### URL Parameters
 Parameter | Data Type | Description
 --------- | --------- | -----------
-encounter | String | The encounter with which the note is associated
+encounter | [Encounter](#encounters) | The encounter with which the note is associated
 title | String | The title of the note
 note | String | The content of the note
 

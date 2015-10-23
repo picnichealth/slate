@@ -1,4 +1,4 @@
-## Lab Test Results
+# Lab Test Results
 This is an object representing a lab test result.
 
 ### Get a specific lab test result

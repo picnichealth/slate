@@ -1,10 +1,5 @@
 ## Observations
-This is an object representing an observation. An `Observation` object includes
-
-* Laboratory Data
-* Imaging results like bone density or fetal measurements
-* Devices Measurements such EKG data or Pulse Oximetry data
-* Clinical assessment tools such as APGAR
+This is an object representing an observation. An `Observation` object is a panel for [lab test results](#lab-test-results).
 
 ### Get a specific observation
 > Example request:
@@ -69,7 +64,7 @@ curl "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb
 Return a lab test result object.
 
 #### HTTP Request
-`GET https://api.picnichealth.com/v1/lab-test-results/:id`
+`GET https://api.picnichealth.com/v1/observations/:id`
 
 #### URL Parameters
 Parameter | Data Type | Description
@@ -189,6 +184,7 @@ Parameter | Data Type | Description
 date | String | The date of the observation
 name | String | The name of the observation. Usually it is the name of the lab test panel.
 coding | [Code](#codes) | The code representing the observation
+encounter | [Encounter](#encounters) | The [laboratory test](#example-laboratory-test) encounter when the observation was made.
 component | Array of [LabTestResult](#lab-test-results) | The component lab test resuts of the observation
 
 ### Update an observation
@@ -234,6 +230,7 @@ Parameter | Data Type | Description
 --------- | --------- | -----------
 date | String | The date of the observation
 name | String | The name of the observation. Usually it is the name of the lab test panel.
+encounter | [Encounter](#encounters) | The [laboratory test](#example-laboratory-test) encounter when the observation was made.
 coding | [Code](#codes) | The code representing the observation
 
 ### Delete an observation
