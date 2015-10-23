@@ -295,7 +295,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 
 <p><code class="prettyprint">GET https://api.picnichealth.com/v1/patients</code></p>
 
-<h2 id="lab-test-results">Lab Test Results</h2>
+<h1 id="lab-test-results">Lab Test Results</h1>
 
 <p>This is an object representing a lab test result.</p>
 
@@ -1823,7 +1823,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </thead><tbody>
 <tr>
 <td>encounter</td>
-<td>String</td>
+<td><a href="#encounters">Encounter</a></td>
 <td>The encounter with which the note is associated</td>
 </tr>
 <tr>
@@ -1881,7 +1881,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </thead><tbody>
 <tr>
 <td>encounter</td>
-<td>String</td>
+<td><a href="#encounters">Encounter</a></td>
 <td>The encounter with which the note is associated</td>
 </tr>
 <tr>
@@ -2241,14 +2241,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 
 <h2 id="observations">Observations</h2>
 
-<p>This is an object representing an observation. An <code class="prettyprint">Observation</code> object includes</p>
-
-<ul>
-<li>Laboratory Data</li>
-<li>Imaging results like bone density or fetal measurements</li>
-<li>Devices Measurements such EKG data or Pulse Oximetry data</li>
-<li>Clinical assessment tools such as APGAR</li>
-</ul>
+<p>This is an object representing an observation. An <code class="prettyprint">Observation</code> object is a panel for <a href="#lab-test-results">lab test results</a>.</p>
 
 <h3 id="get-a-specific-observation">Get a specific observation</h3>
 
@@ -2316,7 +2309,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 
 <h4 id="http-request">HTTP Request</h4>
 
-<p><code class="prettyprint">GET https://api.picnichealth.com/v1/lab-test-results/:id</code></p>
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/observations/:id</code></p>
 
 <h4 id="url-parameters">URL Parameters</h4>
 
@@ -2469,6 +2462,11 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <td>The code representing the observation</td>
 </tr>
 <tr>
+<td>encounter</td>
+<td><a href="#encounters">Encounter</a></td>
+<td>The <a href="#example-laboratory-test">laboratory test</a> encounter when the observation was made.</td>
+</tr>
+<tr>
 <td>component</td>
 <td>Array of <a href="#lab-test-results">LabTestResult</a></td>
 <td>The component lab test resuts of the observation</td>
@@ -2533,6 +2531,11 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <td>name</td>
 <td>String</td>
 <td>The name of the observation. Usually it is the name of the lab test panel.</td>
+</tr>
+<tr>
+<td>encounter</td>
+<td><a href="#encounters">Encounter</a></td>
+<td>The <a href="#example-laboratory-test">laboratory test</a> encounter when the observation was made.</td>
 </tr>
 <tr>
 <td>coding</td>
@@ -2823,6 +2826,16 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 
 <h1 id="codes">Codes</h1>
 
+<blockquote>
+<p>End point</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="s2">"https://api.picnichealth.com/v1/codes"</span>
+</code></pre>
+
+<p>This is an object representing a code.</p>
+
+<h2 id="code-systems">Code Systems</h2>
+
 <p>Currently, PicnicHealth uses the following standard code systems for each encounter and encounter items:</p>
 
 <ul>
@@ -2831,7 +2844,188 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <li><a target="_blank" href="http://www.cdc.gov/nchs/icd/icd9cm.htm">ICD9-CM</a> for <a href="#problems">Problem</a> objects</li>
 </ul>
 
-<p>There are some cases where a codeable encounter or encounter items cannot be associated with any code in the above standard code systems. For those cases, we use a PicnicHealth built-in code system <code class="prettyprint">Buffet</code> as an extension of the associated code. This <code class="prettyprint">Buffet</code> code is a temporary code and is replaced by the standard code as an equivalent code is added to the standard code system. This allows any codes to be easily managable and reuseable.</p>
+<p>There are some cases where a codeable encounter or encounter items cannot be associated with any code in the above standard code systems. For those cases, we use a PicnicHealth temporary code system as an extension of the associated code. This temporary code is replaced by the standard code as an equivalent code is added to the standard code system. This allows any codes to be easily managable and reuseable.</p>
+
+<h2 id="get-a-specific-code">Get a specific code</h2>
+
+<p>Return a code</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code class="prettyprint">GET https://api.picnichealth.com/v1/codes/:id</code></p>
+
+<h4 id="url-parameters">URL Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The ID of the code to be retrieved.</td>
+</tr>
+</tbody></table>
+
+<h3 id="example-code-system-loinc">Example Code System: LOINC</h3>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98f391e1-eff0-4f1e-98c5-0ddab280b42a"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198-5"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"codeSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loinc"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C reactive protein"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the code</td>
+</tr>
+<tr>
+<td>code</td>
+<td>The LOINC code</td>
+</tr>
+<tr>
+<td>codeSystem</td>
+<td>The code system associated with the code</td>
+</tr>
+<tr>
+<td>display</td>
+<td>The display name of the LOINC code</td>
+</tr>
+</tbody></table>
+
+<h3 id="example-code-system-rxnorm">Example Code System: RxNorm</h3>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5172cfcf-0ec9-4c43-ba97-5d6a34182d2b"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1368960"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"codeSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RxNorm"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELZICOL (Oral Pill) 400 mg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the code</td>
+</tr>
+<tr>
+<td>code</td>
+<td>The unique identifier <code class="prettyprint">rx_cui</code> from RxNorm</td>
+</tr>
+<tr>
+<td>codeSystem</td>
+<td>The code system associated with the code</td>
+</tr>
+<tr>
+<td>display</td>
+<td>The display name of the RxNorm code</td>
+</tr>
+</tbody></table>
+
+<h3 id="example-code-system-icd9-cm">Example Code System: ICD9-CM</h3>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d43dbad-72f9-4ea9-b895-87a92e757fdc"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401.9"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"codeSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ICD9-CM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unspecified essential hypertension"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the code</td>
+</tr>
+<tr>
+<td>code</td>
+<td>The ICD9-CM code</td>
+</tr>
+<tr>
+<td>codeSystem</td>
+<td>The code system associated with the code</td>
+</tr>
+<tr>
+<td>display</td>
+<td>The display name of the ICD9-CM code</td>
+</tr>
+</tbody></table>
+
+<h3 id="example-code-system-temporary-code">Example Code System: temporary code</h3>
+
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3a1270ff-8144-401d-801f-1d5f2552da95"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"codeSystem"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MedicationStatement"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mulitivitamins"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the code</td>
+</tr>
+<tr>
+<td>code</td>
+<td>The unique code ID from the code system</td>
+</tr>
+<tr>
+<td>codeSystem</td>
+<td>The code system associated with the code</td>
+</tr>
+<tr>
+<td>target</td>
+<td>The object name of the <a href="#encounters">encounter</a> or <a href="#encounter-items">encounter items</a></td>
+</tr>
+<tr>
+<td>display</td>
+<td>The display name of the code</td>
+</tr>
+</tbody></table>
 
           <h1 id="errors">Errors</h1>
 
