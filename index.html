@@ -64,7 +64,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </tr>
 </thead><tbody>
 <tr>
-<td>limit</td>
+<td>count</td>
 <td>The limit on the numbers of objects to be responsed. The maximum limit is 100. The default is 20.</td>
 </tr>
 <tr>
@@ -1371,7 +1371,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/encounters"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+  -u YOUR_API_KEY:
 </code></pre>
 
 <blockquote>
@@ -1442,11 +1442,10 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/encounters"</span> <span class="se">\</span>
+  -u YOUR_API_KEY: <span class="se">\</span>
   -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
   -d <span class="nb">type</span><span class="o">=</span><span class="s2">"Examination"</span> <span class="se">\</span>
-  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d <span class="nv">patient</span><span class="o">=</span><span class="s1">'{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" }
 </span></code></pre>
 
 <blockquote>
@@ -1550,9 +1549,8 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
-  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -u YOUR_API_KEY:
+  -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-19"</span>
 </code></pre>
 
 <blockquote>
@@ -1654,8 +1652,8 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
+  -u YOUR_API_KEY:
+</code></pre>
 
 <blockquote>
 <p>Example response:</p>
@@ -2249,7 +2247,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+  -u YOUR_API_KEY:
 </code></pre>
 
 <blockquote>
@@ -2333,7 +2331,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/observations"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+  -u YOUR_API_KEY:
 </code></pre>
 
 <blockquote>
@@ -2408,10 +2406,9 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/observations"</span> <span class="se">\</span>
   -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-17"</span> <span class="se">\</span>
-  -d <span class="nv">name</span><span class="o">=</span><span class="s2">"CBC with Differential Panel"</span>
-  -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" }
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d <span class="nv">name</span><span class="o">=</span><span class="s2">"CBC with Differential Panel"</span> <span class="se">\</span>
+  -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" } \
+  -u YOUR_API_KEY:
 </span></code></pre>
 
 <blockquote>
@@ -2479,10 +2476,10 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
+  -u YOUR_API_KEY: <span class="se">\</span>
   -d <span class="nv">date</span><span class="o">=</span><span class="s2">"2015-10-19"</span> <span class="se">\</span>
   -d <span class="nv">component</span><span class="o">=</span><span class="s1">'[ { object: "LabTestResult", referenceId: "14f360b1-c5ae-40b2-967f-5670315295e0" } ]'</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+
 </code></pre>
 
 <blockquote>
@@ -2550,8 +2547,8 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
+  -u YOUR_API_KEY:
+</code></pre>
 
 <blockquote>
 <p>Example response:</p>
@@ -2594,7 +2591,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/conditions/0507420d-fcf8-4ec9-8bf0-c10bf408e6cd"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+  -u YOUR_API_KEY:
 </code></pre>
 
 <blockquote>
@@ -2642,7 +2639,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl <span class="s2">"https://api.picnichealth.com/v1/conditions"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+  -u YOUR_API_KEY:
 </code></pre>
 
 <blockquote>
@@ -2685,8 +2682,7 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/conditions"</span> <span class="se">\</span>
   -d <span class="nv">encounter</span><span class="o">=</span><span class="s1">'{ "object": "Code", "referenceId:": "72314206-32df-4777-9a26-73b37bae9a5a" }'</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -u YOUR_API_KEY:
 </code></pre>
 
 <blockquote>
@@ -2736,8 +2732,8 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="s2">"https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
-  -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }'</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY"</span>
+  -H YOUR_API_KEY: <span class="se">\</span>
+  -d <span class="nv">coding</span><span class="o">=</span><span class="s1">'{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }'</span>
 </code></pre>
 
 <blockquote>
@@ -2790,8 +2786,8 @@ curl <span class="s2">"https://api.picnichealth.com/v1/END_POINT"</span> <span c
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X DELETE <span class="s2">"https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: YOUR_API_KEY
-</span></code></pre>
+  -u YOUR_API_KEY:
+</code></pre>
 
 <blockquote>
 <p>Example response:</p>
