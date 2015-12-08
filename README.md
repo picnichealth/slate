@@ -63,6 +63,14 @@ availalable at the output of `boot2docker ip` instead of `localhost:4567`.*
 
 Now that Slate is all set up your machine, you'll probably want to learn more about [editing Slate markdown](https://github.com/tripit/slate/wiki/Markdown-Syntax), or [how to publish your docs](https://github.com/tripit/slate/wiki/Deploying-Slate).
 
+### Building and Publishing to [picnichealth.github.io/slate](picnichealth.github.io/slate)
+
+1. Make changes for endpoints in source/resources/...
+2. Run `$ python preprocess.py` to generate a single resources.md file from resources
+3. Run `$ rake build` to build output in build directory
+3. Commit and push changes to git
+4. Run `$ rake publish` to publish the commit to [picnichealth.github.io/slate](picnichealth.github.io/slate)
+
 Examples of Slate in the Wild
 ---------------------------------
 
