@@ -174,7 +174,7 @@ email | String | The email address of the medical practitioner
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/medical-practitioners/68e0c31f-481d-4b56-98e5-e9b88fc8f601" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

@@ -845,7 +845,7 @@ conclusion | The summary of the laboratory test
 
 ```shell
 curl "https://api.picnichealth.com/v1/encounters" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -915,11 +915,10 @@ Return a list of encounters
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/encounters" \
+  -u YOUR_API_KEY: \
   -d date="2015-10-17" \
   -d type="Examination" \
-  -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" }
 ```
 
 > Example response:
@@ -978,9 +977,8 @@ Note: The attributes representing [encounter items](#encounter-items) such as `n
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -d date="2015-10-19" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -u YOUR_API_KEY:
+  -d date="2015-10-19"
 ```
 
 > Example response:
@@ -1038,7 +1036,7 @@ Note: The attributes representing [encounter items](#encounter-items) such as `n
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1450,7 +1448,7 @@ This is an object representing an observation. An `Observation` object is a pane
 
 ```shell
 curl "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1520,7 +1518,7 @@ id | String | The ID of the observation to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/observations" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1594,10 +1592,9 @@ Return a list of observation objects
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/observations" \
   -d date="2015-10-17" \
-  -d name="CBC with Differential Panel"
-  -d coding='{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" }
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d name="CBC with Differential Panel" \
+  -d coding='{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" } \
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1636,10 +1633,10 @@ component | Array of [LabTestResult](#lab-test-results) | The component lab test
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
+  -u YOUR_API_KEY: \
   -d date="2015-10-19" \
   -d component='[ { object: "LabTestResult", referenceId: "14f360b1-c5ae-40b2-967f-5670315295e0" } ]' \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+
 ```
 
 > Example response:
@@ -1682,7 +1679,7 @@ coding | [Code](#codes) | The code representing the observation
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1711,7 +1708,7 @@ This is an object representing a condition.
 
 ```shell
 curl "https://api.picnichealth.com/v1/conditions/0507420d-fcf8-4ec9-8bf0-c10bf408e6cd" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1746,7 +1743,7 @@ id | The ID of the condition to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/conditions" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1787,8 +1784,7 @@ Return a list of condition objects
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/conditions" \
   -d encounter='{ "object": "Code", "referenceId:": "72314206-32df-4777-9a26-73b37bae9a5a" }' \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -1821,8 +1817,8 @@ coding | [Code](#codes) | The coding of the condition
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
-  -d coding='{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }' \
-  -H "Authorization: YOUR_API_KEY"
+  -H YOUR_API_KEY: \
+  -d coding='{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }'
 ```
 
 > Example response:
@@ -1858,7 +1854,7 @@ coding | [Code](#codes) | The coding of the condition
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

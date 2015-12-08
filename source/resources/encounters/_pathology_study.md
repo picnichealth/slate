@@ -211,7 +211,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the pathology stu
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/pathology-studies/79689692-b639-4c56-b57e-1528d2550b5e" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

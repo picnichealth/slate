@@ -6,7 +6,7 @@ This is an object representing a condition.
 
 ```shell
 curl "https://api.picnichealth.com/v1/conditions/0507420d-fcf8-4ec9-8bf0-c10bf408e6cd" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -41,7 +41,7 @@ id | The ID of the condition to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/conditions" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -82,8 +82,7 @@ Return a list of condition objects
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/conditions" \
   -d encounter='{ "object": "Code", "referenceId:": "72314206-32df-4777-9a26-73b37bae9a5a" }' \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -116,8 +115,8 @@ coding | [Code](#codes) | The coding of the condition
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
-  -d coding='{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }' \
-  -H "Authorization: YOUR_API_KEY"
+  -H YOUR_API_KEY: \
+  -d coding='{ object: "Code", referenceId: "e04d504c-ab2e-4126-9180-b8384c315590" }'
 ```
 
 > Example response:
@@ -153,7 +152,7 @@ coding | [Code](#codes) | The coding of the condition
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/conditions/50f372c6-1aeb-4b21-9fbe-b2d0d1a8968e" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

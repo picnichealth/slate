@@ -210,7 +210,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the procedure
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/procedures/2fdc49ac-bc0b-407d-a6f8-7e23d3db0f4b" \
-  -H "Authorization: YOUR_API_KEY:
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

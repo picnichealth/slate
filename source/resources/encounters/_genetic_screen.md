@@ -6,7 +6,7 @@ This is an object representing a genetic screen.
 
 ```shell
 curl "https://api.picnichealth.com/v1/genetic-screens/2c5f5800-6bda-4018-9c11-f4275880495b \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -49,7 +49,7 @@ id | String | The ID of the genetic screen to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/genetic-screens" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -92,10 +92,9 @@ Return a list of genetic screens
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/genetic-screens" \
+  -u YOUR_API_KEY" \
   -d date="2015-10-17" \
-  -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" }
 ```
 
 > Example response:
@@ -133,9 +132,8 @@ notes | Array of [TextSection](#text-sections) | The notes for the genetic scree
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/genetic-screens/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -d date="2015-10-19" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -u YOUR_API_KEY \
+  -d date="2015-10-19"
 ```
 
 > Example response:
@@ -173,7 +171,7 @@ notes | Array of [TextSection](#text-sections) | The notes for the genetic scree
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/genetic-screens/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

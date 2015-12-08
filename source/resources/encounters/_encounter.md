@@ -409,7 +409,7 @@ conclusion | The summary of the laboratory test
 
 ```shell
 curl "https://api.picnichealth.com/v1/encounters" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -479,11 +479,10 @@ Return a list of encounters
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/encounters" \
+  -u YOUR_API_KEY: \
   -d date="2015-10-17" \
   -d type="Examination" \
-  -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" } \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d patient='{ "object": "Patient", "referenceId": "651ec5f6-b2c9-4c15-8c01-47e0dd942d3d" }
 ```
 
 > Example response:
@@ -542,9 +541,8 @@ Note: The attributes representing [encounter items](#encounter-items) such as `n
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -d date="2015-10-19" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -u YOUR_API_KEY:
+  -d date="2015-10-19"
 ```
 
 > Example response:
@@ -602,7 +600,7 @@ Note: The attributes representing [encounter items](#encounter-items) such as `n
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/encounters/516fe3e3-386b-4c3a-8744-20f2211254b4" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

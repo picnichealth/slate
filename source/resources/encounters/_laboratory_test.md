@@ -6,7 +6,7 @@ This is an object representing a laboratory test. A `LaboratoryTest` object incl
 
 ```shell
 curl "https://api.picnichealth.com/v1/laboratory-tests/a15ad9e5-d96b-4ebf-9781-bccc3707932d" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -61,7 +61,7 @@ id | The ID of the laboratory test to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/laboratory-tests" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -120,10 +120,9 @@ Return a list of laboratory test objects
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/laboratory-tests" \
+  -u YOUR_API_KEY: \
   -d date="2015-10-17" \
-  -d performer='{ "object": "MedicalPractitioner", "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf" }' \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d performer='{ "object": "MedicalPractitioner", "referenceId": "b034557d-5dbe-4812-ab13-4678c1ef8daf" }'
 ```
 
 > Example response:
@@ -162,9 +161,8 @@ presentedForm | [DataSource](#data-sources) | The data source of the laboratory 
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/laboratory-tests/b08c2faf-8cde-4075-b25f-aed2ebe0f657" \
-  -d date="2015-10-19" \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -u YOUR_API_KEY: \
+  -d date="2015-10-19"
 ```
 
 > Example response:
@@ -203,7 +201,7 @@ presentedForm | [DataSource](#data-sources) | The data source of the laboratory 
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/laboratory-tests/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:

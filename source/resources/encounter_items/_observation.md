@@ -6,7 +6,7 @@ This is an object representing an observation. An `Observation` object is a pane
 
 ```shell
 curl "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -76,7 +76,7 @@ id | String | The ID of the observation to be retrieved.
 
 ```shell
 curl "https://api.picnichealth.com/v1/observations" \
-  -H "Authorization: YOUR_API_KEY"
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -150,10 +150,9 @@ Return a list of observation objects
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/observations" \
   -d date="2015-10-17" \
-  -d name="CBC with Differential Panel"
-  -d coding='{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" }
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+  -d name="CBC with Differential Panel" \
+  -d coding='{ "object": "Code", "referenceId": "F4AA6E3E-26EC-4EA6-A4A6-C2A3108F8C3C" } \
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
@@ -192,10 +191,10 @@ component | Array of [LabTestResult](#lab-test-results) | The component lab test
 
 ```shell
 curl -X POST "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
+  -u YOUR_API_KEY: \
   -d date="2015-10-19" \
   -d component='[ { object: "LabTestResult", referenceId: "14f360b1-c5ae-40b2-967f-5670315295e0" } ]' \
-  -H "Authorization: YOUR_API_KEY" \
-  -H "Content-Type: application/json"
+
 ```
 
 > Example response:
@@ -238,7 +237,7 @@ coding | [Code](#codes) | The code representing the observation
 
 ```shell
 curl -X DELETE "https://api.picnichealth.com/v1/observations/d3a0b758-47ca-414b-9f9e-400bb2539b81" \
-  -H "Authorization: YOUR_API_KEY
+  -u YOUR_API_KEY:
 ```
 
 > Example response:
